@@ -1,4 +1,4 @@
-*** An exercise for Prime subscribers. Visit http://learn.thoughtbot.com/prime to learn more.***
+***An exercise for Prime subscribers. Visit http://learn.thoughtbot.com/prime to learn more.***
 
 ### Difficulty level: intermediate.
 
@@ -10,11 +10,11 @@ Write a command-line program that prints the number of lines spoken by each char
 
 Sample usage/output (using made-up numbers):
 
-  $ ruby macbeth_analyzer.rb
-    543 Macbeth
-    345 Banquo
-    220 Duncan
-    (etc.)
+    $ ruby macbeth_analyzer.rb
+      543 Macbeth
+      345 Banquo
+      220 Duncan
+      (etc.)
 
 You can find an XML-encoded version of Macbeth here: http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml. Your program should download and parse this file at runtime.
 
