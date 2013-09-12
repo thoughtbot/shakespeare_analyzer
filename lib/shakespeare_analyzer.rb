@@ -11,7 +11,7 @@ class ShakespeareAnalyzer
 
 
   def print_lines
-    read_lines.sort_by{|k,v| -v}.each do |key, value|
+    in_descending_order(read_lines).each do |key, value|
       puts "#{key}: #{value} lines"
     end
   end
@@ -32,6 +32,10 @@ class ShakespeareAnalyzer
 
   def current_speaker line
     line.parent.elements[1].text
+  end
+
+  def in_descending_order characters
+    characters.sort_by { |key, value| -value }
   end
 
 end
