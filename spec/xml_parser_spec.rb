@@ -11,4 +11,12 @@ describe XmlParser do
       expect(xml_parser.lines_by_speaker('ThreeLiner')).to be 3
     end
   end
+
+  describe '#speakers' do
+    it 'returs all speakers in play' do
+      filename = File.dirname(__FILE__) + '/test_files/test.xml'
+      xml_parser = XmlParser.new(File.read(filename))
+      expect(xml_parser.speakers).to eq ['OneLiner', 'TwoLiner', 'ThreeLiner']
+    end
+  end
 end
