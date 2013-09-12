@@ -25,9 +25,13 @@ class ShakespeareAnalyzer
   def read_lines 
     characters = Hash.new 0
     @file.elements.each("/PLAY//LINE") do |line|
-      characters[line.parent.elements[1].text] += 1
+      characters[current_speaker(line)] += 1
     end
     characters
+  end
+
+  def current_speaker line
+    line.parent.elements[1].text
   end
 
 end
