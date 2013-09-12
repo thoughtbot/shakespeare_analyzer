@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE PLAY SYSTEM "play.dtd">
+
+<PLAY>
+  <ACT>
+    <SCENE>
+      <SPEECH>
+        <SPEAKER>OneLiner</SPEAKER>
+        <LINE>Nothing more to say.</LINE>
+      </SPEECH>
+      <SPEECH>
+        <SPEAKER>TwoLiner</SPEAKER>
+        <LINE>Hello!</LINE>
+        <LINE>World!</LINE>
+      </SPEECH>
+      <SPEECH>
+        <SPEAKER>ThreeLiners</SPEAKER>
+        <LINE>One</LINE>
+      </SPEECH>
+    </SCENE>
+  </ACT>
+  <ACT>
+    <SCENE>
+      <SPEECH>
+        <SPEAKER>ThreeLiner</SPEAKER>
+        <LINE>Two</LINE>
+      </SPEECH>
+    </SCENE>
+    <SCENE>
+      <SPEECH>
+        <SPEAKER>ThreeLiner</SPEAKER>
+        <LINE>Three!</LINE>
+      </SPEECH>
+    </SCENE>
+  </ACT>
+</PLAY>
