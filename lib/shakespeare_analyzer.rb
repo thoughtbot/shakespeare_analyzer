@@ -2,13 +2,10 @@ require 'rexml/document'
 
 class ShakespeareAnalyzer
 
-  attr_accessor :output
-
   def initialize options = {}
     @downloader = options[:downloader]
     @file = REXML::Document.new get_file
   end
-
 
   def print_lines
     in_descending_order(read_lines).each do |key, value|
