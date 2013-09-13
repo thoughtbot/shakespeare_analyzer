@@ -16,7 +16,7 @@ class ShakespeareAnalyzer
   def speakers_sorted_by_line_count
     speakers = {}
     xml_parser.speakers.each do |speaker|
-      speakers[speaker] = xml_parser.lines_by_speaker(speaker)
+      speakers[speaker] = xml_parser.count_lines_by_speaker(speaker)
     end
     speakers.sort_by { |_key, value| value }.reverse
   end
