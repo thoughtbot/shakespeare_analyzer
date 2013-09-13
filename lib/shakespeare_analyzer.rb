@@ -2,8 +2,6 @@ require 'open-uri'
 require_relative 'xml_parser'
 
 class ShakespeareAnalyzer
-  attr_accessor :file_content
-
   def initialize(uri)
     @file_content = get_content_from_uri(uri)
     print_speakers_sorted_by_line_count
