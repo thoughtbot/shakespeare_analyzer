@@ -1,17 +1,12 @@
-require 'xml_parser'
 require 'open-uri'
+require_relative 'xml_parser'
 
 class ShakespeareAnalyzer
   attr_accessor :file_content
 
   def initialize(uri)
-   @file_content = get_content_from_uri(uri)
-  end
-
-  def print_speakers_sorted_by_line_count
-    speakers_sorted_by_line_count.each do |speaker, lines|
-      puts "#{lines} #{speaker}"
-    end
+    @file_content = get_content_from_uri(uri)
+    print_speakers_sorted_by_line_count
   end
 
   private
@@ -28,4 +23,14 @@ class ShakespeareAnalyzer
     end
     speakers.sort_by { |_key, value| value }.reverse
   end
+
+  def print_speakers_sorted_by_line_count
+    speakers_sorted_by_line_count.each do |speaker, lines|
+      puts "#{lines} #{speaker}"
+    end
+  end
+end
+
+if __FILE__ == $0
+  ShakespeareAnalyzer.new('http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml')
 end
