@@ -17,11 +17,14 @@ class ShakespeareAnalyzer
 
   def speakers_sorted_by_line_count
     speakers = {}
-    xml_parser = XmlParser.new(@file_content)
     xml_parser.speakers.each do |speaker|
       speakers[speaker] = xml_parser.lines_by_speaker(speaker)
     end
     speakers.sort_by { |_key, value| value }.reverse
+  end
+
+  def xml_parser
+    XmlParser.new(@file_content)
   end
 
   def print_speakers_sorted_by_line_count
