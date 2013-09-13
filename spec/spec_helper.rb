@@ -17,3 +17,7 @@ RSpec.configure do |config|
 end
 
 require_relative "../lib/shakespeare_analyzer" 
+require_relative "../lib/xml_parser"
+
+XML_URL = "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
+XML_FILE = "macbeth.xml"
