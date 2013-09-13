@@ -1,5 +1,5 @@
-require 'net/http'
 require 'xml_parser'
+require 'open-uri'
 
 class ShakespeareAnalyzer
   attr_accessor :file_content
@@ -17,7 +17,7 @@ class ShakespeareAnalyzer
   private
 
   def get_content_from_uri(uri)
-    Net::HTTP.get_response(URI.parse(uri)).body
+    open(uri, proxy: ENV['http_proxy']).read
   end
 
   def speakers_sorted_by_line_count
