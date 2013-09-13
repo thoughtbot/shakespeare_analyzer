@@ -22,7 +22,7 @@ class ShakespeareAnalyzer
   end
 
   def xml_parser
-    XmlParser.new(@file_content)
+    @_xml_parser ||= XmlParser.new(@file_content)
   end
 
   def print_speakers_sorted_by_line_count
