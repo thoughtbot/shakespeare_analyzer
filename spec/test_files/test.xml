@@ -10,6 +10,7 @@
       </SPEECH>
       <SPEECH>
         <SPEAKER>TwoLiner</SPEAKER>
+        <SPEAKER>FourLiner</SPEAKER>
         <LINE>Hello!</LINE>
         <LINE>World!</LINE>
       </SPEECH>
@@ -28,7 +29,12 @@
     </SCENE>
     <SCENE>
       <SPEECH>
+      <SPEECH>
         <SPEAKER>ThreeLiner</SPEAKER>
+        <SPEAKER>FourLiner</SPEAKER>
+        <LINE>Three!</LINE>
+      </SPEECH>
+        <SPEAKER>FourLiner</SPEAKER>
         <LINE>Three!</LINE>
       </SPEECH>
     </SCENE>
