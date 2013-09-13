@@ -4,7 +4,7 @@ describe ShakespeareAnalyzer do
 
   before :all do
     @shakespeare = ShakespeareAnalyzer.new
-    @xml_url = "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
+    @xml_url = ShakespeareAnalyzer::MACBETH_XML
   end
 
   describe "#new" do

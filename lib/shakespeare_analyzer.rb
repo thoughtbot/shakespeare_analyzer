@@ -3,25 +3,19 @@ require 'rexml/document'
 
 class ShakespeareAnalyzer
 
+  MACBETH_XML = "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
+
   attr_reader :url
 
-  def initialize url = "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
+  def initialize url = MACBETH_XML
     @url = url
-    @output = String.new
   end
   
   def start
     create_rexml_document
     create_speakers_and_lines_hash
     sort_speakers_by_number_of_lines
-
-    @output = String.new
-
-    @speakers.each do |name,number_of_lines|
-      @output << "#{number_of_lines}\t#{name}\n"
-    end
-
-    return @output
+    print_speakers_and_lines
   end
 
   private
@@ -54,6 +48,15 @@ class ShakespeareAnalyzer
 
   def sort_speakers_by_number_of_lines
     @speakers = @speakers.sort_by { | key, value | value }.reverse 
+  end
+
+  def print_speakers_and_lines
+    output = String.new
+    @speakers.each do |name,number_of_lines|
+      output << "#{number_of_lines}\t#{name}\n"
+    end
+
+    output
   end
 
 end
