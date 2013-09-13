@@ -11,9 +11,9 @@ class XmlParser
 
   def speakers
     speakers = []
-    @doc.css('PLAY PERSONAE PERSONA').each do |speaker|
+    @doc.css('PLAY SPEAKER').each do |speaker|
       speakers << speaker.text
     end
-    speakers
+    speakers.uniq
   end
 end

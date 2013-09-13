@@ -2,15 +2,6 @@
 <!DOCTYPE PLAY SYSTEM "play.dtd">
 
 <PLAY>
-  <PERSONAE>
-    <TITLE>Speakers</TITLE>
-    <PERSONA>OneLiner</PERSONA>
-    <PGROUP>
-      <PERSONA>TwoLiner</PERSONA>
-      <PERSONA>ThreeLiner</PERSONA>
-      <GRPDESCR>More Liners</GRPDESCR>
-    </PGROUP>
-  </PERSONAE>
   <ACT>
     <SCENE>
       <SPEECH>
@@ -23,7 +14,7 @@
         <LINE>World!</LINE>
       </SPEECH>
       <SPEECH>
-        <SPEAKER>ThreeLiners</SPEAKER>
+        <SPEAKER>ThreeLiner</SPEAKER>
         <LINE>One</LINE>
       </SPEECH>
     </SCENE>
