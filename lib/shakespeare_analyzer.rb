@@ -9,9 +9,15 @@ class ShakespeareAnalyzer
     @url = url
     @output = String.new
   end
+  
+  def start
+    create_rexml_document
+    create_speakers_and_lines_hash
+    sort_speakers_by_number_of_lines
 
-  def run hash
-    hash.each do |name,number_of_lines|
+    @output = String.new
+
+    @speakers.each do |name,number_of_lines|
       @output << "#{number_of_lines}\t#{name}\n"
     end
 
@@ -28,6 +34,26 @@ class ShakespeareAnalyzer
     @doc = REXML::Document.new(fetch_raw_xml_data)
   end
 
+  def create_speakers_and_lines_hash
+    @speakers = Hash.new(0)
+    @doc.elements.each("PLAY/ACT/SCENE/SPEECH") do |speech|
+      
+      speech.elements.each("SPEAKER") do |speaker|
+        @character = speaker.text
+      end
 
+      @line_count = 0
+      speech.elements.each("LINE") do |line|
+        @line_count += 1
+      end
+
+      @speakers[@character] += @line_count
+
+    end
+  end
+
+  def sort_speakers_by_number_of_lines
+    @speakers = @speakers.sort_by { | key, value | value }.reverse 
+  end
 
 end
