@@ -9,14 +9,11 @@ describe ShakespeareAnalyzer do
       analyzer = ShakespeareAnalyzer.new('http://www.example.com/test_file.txt')
       expect(analyzer.file_content).to eq 'This is just a test file!'
     end
-  end
 
-  describe '#print_speakers_sorted_by_line_count' do
     it 'prints list of speakers sorted by line count' do
       test_file = File.dirname(__FILE__) + '/test_files/test.xml'
       stub_request(:get, 'http://www.example.com/test.xml').to_return(body: File.read(test_file))
-      analyzer = ShakespeareAnalyzer.new('http://www.example.com/test.xml')
-      output = capture_stdout { analyzer.print_speakers_sorted_by_line_count }
+      output = capture_stdout { ShakespeareAnalyzer.new('http://www.example.com/test.xml') }
       expect(output).to eq "3 ThreeLiner\n2 TwoLiner\n1 OneLiner\n"
     end
   end
