@@ -23,16 +23,19 @@ class ShakespeareAnalyzer
     @speakers = Hash.new(0)
     @doc.elements.each("PLAY/ACT/SCENE/SPEECH") do |speech|
       
-      speech.elements.each("SPEAKER") do |speaker|
-        @character = speaker.text
-      end
-
       @line_count = 0
       speech.elements.each("LINE") do |line|
         @line_count += 1
+      end 
+      
+      @characters = Array.new
+      speech.elements.each("SPEAKER") do |speaker|
+        @characters << speaker.text
       end
 
-      @speakers[@character] += @line_count
+      @characters.each do |character|
+        @speakers[character] += @line_count
+      end
 
     end
   end
