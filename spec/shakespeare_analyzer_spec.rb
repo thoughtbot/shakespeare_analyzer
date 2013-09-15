@@ -3,7 +3,6 @@ require 'spec_helper'
 #require 'shakespeare_analyzer'
 
 describe ShakespeareAnalyzer do
-  puts "This is a test!!!"
   it "handles a missing input file" do
     output =  `bin/shakespeare_analyzer`
     expect(output).to eq "No input file; terminating\n"
@@ -30,47 +29,63 @@ describe ShakespeareAnalyzer do
 0 MACBETH
 EOF
   end
-  it "processes one persona with one speech" do
+  it "processes one persona with one speech and no lines" do
+    create_testxml "test.xml", <<EOF
+<MAIN>
+<PERSONA>MALCOLM</PERSONA>
+<SPEECH>
+<SPEAKER>MALCOLM</SPEAKER>
+</SPEECH>
+</MAIN>
+EOF
+    output = `bin/shakespeare_analyzer test.xml`
+    expect(output).to eq <<EOF
+0 MALCOLM
+EOF
+  end
+  it "processes two persona with different speeches and one line" do
     create_testxml "test.xml", <<EOF
 <main>
 <PERSONA>MALCOLM</PERSONA>
+<PERSONA>MACBETH</PERSONA>
+<SPEECH>
 <SPEAKER>MALCOLM</SPEAKER>
+<LINE>This is a test</LINE>
+</SPEECH>
+<SPEECH>
+<SPEAKER>MACBETH</SPEAKER>
+</SPEECH>
+<SPEECH>
+<SPEAKER>MALCOLM</SPEAKER>
+</SPEECH>
 </main>
 EOF
     output = `bin/shakespeare_analyzer test.xml`
     expect(output).to eq <<EOF
 1 MALCOLM
-EOF
-  end
-  it "processes two persona with different speeches" do
-    create_testxml "test.xml", <<EOF
-<main>
-<PERSONA>MALCOLM</PERSONA>
-<PERSONA>MACBETH</PERSONA>
-<SPEAKER>MALCOLM</SPEAKER>
-<SPEAKER>MACBETH</SPEAKER>
-<SPEAKER>MALCOLM</SPEAKER>
-</main>
-EOF
-    output = `bin/shakespeare_analyzer test.xml`
-    expect(output).to eq <<EOF
-2 MALCOLM
-1 MACBETH
+0 MACBETH
 EOF
   end
   it "handles speakers without persona" do
     create_testxml "test.xml", <<EOF
 <main>
 <PERSONA>MALCOLM</PERSONA>
+<SPEECH>
 <SPEAKER>MALCOLM</SPEAKER>
+</SPEECH>
+<SPEECH>
 <SPEAKER>MACBETH</SPEAKER>
+<LINE>This is a test</LINE>
+</SPEECH>
+<SPEECH>
 <SPEAKER>MALCOLM</SPEAKER>
+</SPEECH>
 </main>
 EOF
     output = `bin/shakespeare_analyzer test.xml`
     expect(output).to eq <<EOF
-2 MALCOLM
 1 MACBETH
+0 MALCOLM
 EOF
   end
   it "sorts the output by speaker count" do
@@ -79,12 +94,30 @@ EOF
 <PERSONA>MALCOLM</PERSONA>
 <PERSONA>MACBETH</PERSONA>
 <PERSONA>DUNCAN</PERSONA>
+<SPEECH>
 <SPEAKER>MALCOLM</SPEAKER>
+<LINE></LINE>
+</SPEECH>
+<SPEECH>
 <SPEAKER>MACBETH</SPEAKER>
+<LINE></LINE>
+<LINE></LINE>
+</SPEECH>
+<SPEECH>
 <SPEAKER>DUNCAN</SPEAKER>
+<LINE></LINE>
+</SPEECH>
+<SPEECH>
 <SPEAKER>MALCOLM</SPEAKER>
+<LINE></LINE>
+</SPEECH>
+<SPEECH>
 <SPEAKER>MACBETH</SPEAKER>
-<SPEAKER>MACBETH</SPEAKER>
+<LINE></LINE>
+</SPEECH>
+<SPEECH>
+<SPEAKER>LADY MACBETH</SPEAKER>
+</SPEECH>
 </main>
 EOF
     output = `bin/shakespeare_analyzer test.xml`
@@ -92,6 +125,7 @@ EOF
 3 MACBETH
 2 MALCOLM
 1 DUNCAN
+0 LADY MACBETH
 EOF
   end
   it "rejects all but HTTP address for an non-local file" do

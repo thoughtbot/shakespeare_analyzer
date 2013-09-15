@@ -48,11 +48,14 @@ class ShakespeareAnalyzer
       pname = p.children.text.tr('"','')
       @persona[pname] = 0
     end
-    doc.css('SPEAKER').each do |s|
-      sname = s.children.text.tr('"','')
+    doc.css('SPEECH').each do |speech|
+      speaker = speech.css('SPEAKER').children.text.tr('"','')
+      #sname = s.children.text.tr('"','')
       ### Turns out there are speakers without @persona!
-      @persona[sname] = 0 if @persona[sname].nil?
-      @persona[sname] += 1
+      @persona[speaker] = 0 if @persona[speaker].nil?
+      speech.css('LINE').each do |line|
+        @persona[speaker] += 1
+      end
     end
   end
 
