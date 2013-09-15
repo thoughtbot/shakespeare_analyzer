@@ -61,6 +61,9 @@ class ShakespeareAnalyzer
 
   def list_by_speaker_count
     sorted_output = (@persona.sort_by {|k,v| v}).reverse
-    sorted_output.each { |a| puts "#{a[1]} #{a[0]}" }
+    sorted_output.each do |a| 
+      name = (a[0].split(' ').map {|n| n.capitalize }).join(" ")
+      puts "#{a[1]} #{name}" 
+    end
   end
 end

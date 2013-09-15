@@ -14,7 +14,7 @@ describe ShakespeareAnalyzer do
   it "processes a persona with no speaking" do
     create_testxml("test.xml","<PERSONA>MALCOLM</PERSONA>") 
     output = `bin/shakespeare_analyzer test.xml`
-    expect(output).to eq "0 MALCOLM\n"
+    expect(output).to eq "0 Malcolm\n"
   end
   it "processes two persona with no speaking" do
     create_testxml "test.xml",<<EOF
@@ -25,8 +25,8 @@ describe ShakespeareAnalyzer do
     EOF
     output = %x{bin/shakespeare_analyzer test.xml}
     expect(output).to eq <<EOF
-0 MALCOLM
-0 MACBETH
+0 Malcolm
+0 Macbeth
 EOF
   end
   it "processes one persona with one speech and no lines" do
@@ -40,7 +40,7 @@ EOF
 EOF
     output = `bin/shakespeare_analyzer test.xml`
     expect(output).to eq <<EOF
-0 MALCOLM
+0 Malcolm
 EOF
   end
   it "processes two persona with different speeches and one line" do
@@ -62,8 +62,8 @@ EOF
 EOF
     output = `bin/shakespeare_analyzer test.xml`
     expect(output).to eq <<EOF
-1 MALCOLM
-0 MACBETH
+1 Malcolm
+0 Macbeth
 EOF
   end
   it "handles speakers without persona" do
@@ -84,8 +84,8 @@ EOF
 EOF
     output = `bin/shakespeare_analyzer test.xml`
     expect(output).to eq <<EOF
-1 MACBETH
-0 MALCOLM
+1 Macbeth
+0 Malcolm
 EOF
   end
   it "sorts the output by speaker count" do
@@ -122,10 +122,10 @@ EOF
 EOF
     output = `bin/shakespeare_analyzer test.xml`
     expect(output).to eq <<EOF
-3 MACBETH
-2 MALCOLM
-1 DUNCAN
-0 LADY MACBETH
+3 Macbeth
+2 Malcolm
+1 Duncan
+0 Lady Macbeth
 EOF
   end
   it "rejects all but HTTP address for an non-local file" do
