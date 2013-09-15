@@ -6,7 +6,7 @@ class XmlParser
   end
 
   def count_lines_by_speaker(speaker)
-    @doc.css("PLAY SPEAKER:contains('#{speaker}') ~ LINE").count
+    @doc.css("PLAY SPEECH:has(SPEAKER[text()='#{speaker}']) LINE").count
   end
 
   def speakers

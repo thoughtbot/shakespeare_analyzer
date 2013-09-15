@@ -14,7 +14,7 @@ describe ShakespeareAnalyzer do
       test_file = File.dirname(__FILE__) + '/test_files/test.xml'
       stub_request(:get, 'http://www.example.com/test.xml').to_return(body: File.read(test_file))
       output = capture_stdout { ShakespeareAnalyzer.new('http://www.example.com/test.xml') }
-      expect(output).to eq "4 FourLiner\n3 ThreeLiner\n2 TwoLiner\n1 OneLiner\n"
+      expect(output).to eq "4 FourLiner\n3 ThreeLiner\n2 TwoLiner\n1 Liner\n"
     end
   end
 end
