@@ -94,4 +94,14 @@ EOF
 1 DUNCAN
 EOF
   end
+  it "rejects all but HTTP address for an non-local file" do
+    analyzer = ShakespeareAnalyzer.new("ftp://testing.xml")
+    expect(analyzer.check_input).to be_nil 
+  end
+  it "downloads an HTTP file from the web" do
+    File.delete('play.xml') if FileTest.exists?('play.xml')
+    analyzer = ShakespeareAnalyzer.new("http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml")
+    expect(analyzer.check_input).to be_true
+    expect(FileTest.exist?('play.xml')).to be_true
+  end
 end

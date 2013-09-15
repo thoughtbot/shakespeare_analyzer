@@ -1,17 +1,42 @@
 require 'pp'
 require 'nokogiri'
+require 'net/http'
+require 'uri'
 
 class ShakespeareAnalyzer
   def initialize(file)
     @file = file
   end
+
   def check_input
     if @file.nil? then
       puts "No input file; terminating"
       return nil
-    elsif File.size(@file) == 0 then
-      puts "Empty input file; terminating"
+    elsif FileTest.exist?(@file) then
+      ## Processing a local file
+      if File.size(@file) == 0 then
+        puts "Empty input file; terminating"
+        return nil
+      end
+      return true
+    else
+      ## Must be a remote file
+      return get_http_file
+    end
+  end
+
+  def get_http_file
+    uri = URI(@file)
+    if uri.scheme != 'http'
+      puts "Not an HTTP file; terminating"
       return nil
+    end
+    @file = 'play.xml'
+    Net::HTTP.start(uri.host) do |http|
+      resp = http.get(uri.path)
+      open(@file, 'wb') do |file|
+        file.write(resp.body)
+      end
     end
     true
   end
