@@ -1,7 +1,7 @@
-984 MACBETH
+719 MACBETH
 265 LADY MACBETH
-221 MACDUFF
 212 MALCOLM
+180 MACDUFF
 135 ROSS
 113 BANQUO
 74 LENNOX
@@ -11,15 +11,15 @@
 45 Doctor
 41 LADY MACDUFF
 39 HECATE
-37 SIWARD
 35 Sergeant
 30 First Murderer
+30 SIWARD
 27 Third Witch
 27 Second Witch
 24 ALL
-24 Lord
 23 Gentlewoman
 23 Messenger
+21 Lord
 21 ANGUS
 20 Son
 15 Second Murderer
@@ -30,12 +30,12 @@
 8 Third Murderer
 7 YOUNG SIWARD
 5 Third Apparition
-5 Servant
 5 SEYTON
+5 Servant
 4 Second Apparition
 3 Lords
-2 Both Murderers
 2 First Apparition
 2 FLEANCE
-1 Soldiers
+2 Both Murderers
 1 ATTENDANT
+1 Soldiers
