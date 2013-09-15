@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+load "lib/shakespeare_analyzer.rb"
+
+analyzer = ShakespeareAnalyzer.new(ARGV[0])
+exit if analyzer.check_input.nil?
+STDERR.puts "Processing file: #{ARGV[0]}"
+analyzer.analyze
+analyzer.list_by_speaker_count
+STDERR.puts "Processing complete"
