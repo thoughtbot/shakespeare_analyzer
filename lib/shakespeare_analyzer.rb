@@ -49,12 +49,18 @@ class ShakespeareAnalyzer
       @persona[pname] = 0
     end
     doc.css('SPEECH').each do |speech|
-      speaker = speech.css('SPEAKER').children.text.tr('"','')
-      #sname = s.children.text.tr('"','')
-      ### Turns out there are speakers without @persona!
-      @persona[speaker] = 0 if @persona[speaker].nil?
-      speech.css('LINE').each do |line|
-        @persona[speaker] += 1
+      speakers = speech.css('SPEAKER').each do |s|
+        speaker = s.children.text.tr('"','')
+        ## Sometimes the speaker is 'ALL', but that depends on who's on stage...
+        if speaker == 'ALL' then
+          #@persona.each { |k,v| @persona[k] += 1 }
+        else
+          ### Turns out there are speakers without @persona!
+          @persona[speaker] = 0 if @persona[speaker].nil?
+          speech.css('LINE').each do |line|
+            @persona[speaker] += 1
+          end
+        end
       end
     end
   end

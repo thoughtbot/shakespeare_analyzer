@@ -1,10 +1,10 @@
-718 Macbeth
+719 Macbeth
 265 Lady Macbeth
 212 Malcolm
 180 Macduff
 135 Ross
 113 Banquo
-73 Lennox
+74 Lennox
 70 Duncan
 62 First Witch
 46 Porter
@@ -16,11 +16,10 @@
 30 First Murderer
 27 Third Witch
 27 Second Witch
-24 All
 23 Gentlewoman
 23 Messenger
-21 Angus
 21 Lord
+21 Angus
 20 Son
 15 Second Murderer
 12 Menteith
@@ -29,19 +28,18 @@
 10 Donalbain
 8 Third Murderer
 7 Young Siward
-5 Servant
-5 Seyton
 5 Third Apparition
+5 Seyton
+5 Servant
 4 Second Apparition
 3 Lords
-2 Both Murderers
 2 Fleance
+2 Both Murderers
 2 First Apparition
-1 Soldiers
 1 Attendant
-1 Macbethlennox
+1 Soldiers
+0 Lords, Gentlemen, Officers, Soldiers, Murderers, Attendants, And Messengers.
 0 Young Siward, His Son.
-0 Seyton, An Officer Attending On Macbeth.
 0 Siward, Earl Of Northumberland, General Of The English Forces.
 0 Fleance, Son To Banquo.
 0 Boy, Son To Macduff.
@@ -50,8 +48,8 @@
 0 A Soldier.
 0 A Porter.
 0 An Old Man.
-0 Apparitions.
 0 Gentlewoman Attending On Lady Macbeth.
-0 Lords, Gentlemen, Officers, Soldiers, Murderers, Attendants, And Messengers.
 0 Three Witches.
+0 Apparitions.
+0 Seyton, An Officer Attending On Macbeth.
 0 Duncan, King Of Scotland.

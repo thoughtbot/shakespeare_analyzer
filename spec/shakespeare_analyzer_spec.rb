@@ -138,4 +138,44 @@ EOF
     expect(analyzer.check_input).to be_true
     expect(FileTest.exist?('play.xml')).to be_true
   end
+
+  it "handles two speakers on same speech" do
+    create_testxml "test.xml", <<EOF
+<MAIN>
+<PERSONA>MALCOLM</PERSONA>
+<SPEECH>
+<SPEAKER>MALCOLM</SPEAKER>
+<SPEAKER>DUNCAN</SPEAKER>
+<LINE>Testing</LINE>
+</SPEECH>
+</MAIN>
+EOF
+    output = `bin/shakespeare_analyzer test.xml`
+    expect(output).to eq <<EOF
+1 Duncan
+1 Malcolm
+EOF
+  end
+#  Can't do this; 'ALL' depends on who's in the scene
+#  it "handles the ALL speaker" do
+#    create_testxml "test.xml", <<EOF
+#<MAIN>
+#<PERSONA>MALCOLM</PERSONA>
+#<PERSONA>DUNCAN</PERSONA>
+#<SPEECH>
+#<SPEAKER>DUNCAN</SPEAKER>
+#<LINE>xxx</LINE>
+#</SPEECH
+#<SPEECH>
+#<SPEAKER>ALL</SPEAKER>
+#<LINE>Testing</LINE>
+#</SPEECH>
+#</MAIN>
+#EOF
+#    output = `bin/shakespeare_analyzer test.xml`
+#    expect(output).to eq <<EOF
+#2 Duncan
+#1 Malcolm
+#EOF
+#  end
 end
