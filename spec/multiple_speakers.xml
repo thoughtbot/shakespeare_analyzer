@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE PLAY SYSTEM "play.dtd">
+<PLAY>
+<SPEECH>
+<SPEAKER>MACDUFF</SPEAKER>
+<LINE>O horror, horror, horror! Tongue nor heart</LINE>
+<LINE>Cannot conceive nor name thee!</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>MACBETH</SPEAKER>
+<SPEAKER>LENNOX</SPEAKER>
+<LINE>What's the matter.</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>MACDUFF</SPEAKER>
+<LINE>Confusion now hath made his masterpiece!</LINE>
+<LINE>Most sacrilegious murder hath broke ope</LINE>
+<LINE>The Lord's anointed temple, and stole thence</LINE>
+<LINE>The life o' the building!</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>MACBETH</SPEAKER>
+<LINE>What is 't you say? the life?</LINE>
+</SPEECH>
+</PLAY>
