@@ -17,6 +17,7 @@ class CallbackHandler < XML::SAX::Document
   def start_element(element, attributes)
     @counter.count_line if element == 'LINE'
     @counter.new_speech if element == 'SPEECH'
+    @counter.new_scene if element == 'SCENE'
     @parsing_speaker = (element == 'SPEAKER')
   end
 
