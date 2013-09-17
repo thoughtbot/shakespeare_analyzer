@@ -1,24 +1,28 @@
 require 'spec_helper'
 
 describe MacbethAnalyzer do
+  let(:analyzer) { MacbethAnalyzer.new }
+
+  def stub_contents_with(file_name)
+    allow(analyzer).to receive(:contents).and_return(File.open(fixture_path(file_name)).read)  
+  end  
 
   describe "attributes" do
-    subject { MacbethAnalyzer.new }
 
     it "has url attribute" do
-      expect(subject.url).to eq "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
+      expect(analyzer.url).to eq "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
     end
   end
-	
+  
   it "allows user to dump the entire content into a string", :external do
     expect(MacbethAnalyzer.new.contents.split(/\n/).count).to be > 100
   end
 
-  context "given we are able to read the xml file" do
-    let(:analyzer) { MacbethAnalyzer.new }
+  # these will very quickly test whether the methods are working at all
+  context "given we are able to read a small xml file with similar features as the official file" do
 
     before do 
-      allow(analyzer).to receive(:contents).and_return(File.open(fixture_path('small.xml')).read)
+      stub_contents_with("small.xml")  
     end
 
     it "has many lines" do
@@ -57,14 +61,15 @@ describe MacbethAnalyzer do
     end
   end
 
-  context "given we are able to read the xml file" do
-    let(:analyzer) { MacbethAnalyzer.new }
+  # the following tests should help us make sure results from the original
+  # file is still sane
+  context "given we are able to read the official xml file" do
 
     before do 
-      allow(analyzer).to receive(:contents).and_return(File.open(fixture_path('macbeth.xml')).read)
+      stub_contents_with('macbeth.xml')
     end
 
-    it 'returns First Witch to be 3' do
+    it 'returns First Witch to be 62' do
       result = analyzer.analyze
       expect(result["First Witch"]).to eq 62
     end
