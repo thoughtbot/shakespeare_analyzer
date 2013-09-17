@@ -8,15 +8,15 @@ describe MacbethAnalyzer do
   end  
 
   describe "attributes" do
-
     it "has url attribute" do
       expect(analyzer.url).to eq "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
     end
+
+    it "allows user to dump the entire content into a string", :external do
+      expect(MacbethAnalyzer.new.contents.split(/\n/).count).to be > 100
+    end
   end
   
-  it "allows user to dump the entire content into a string", :external do
-    expect(MacbethAnalyzer.new.contents.split(/\n/).count).to be > 100
-  end
 
   # these will very quickly test whether the methods are working at all
   context "given we are able to read a small xml file with similar features as the official file" do
@@ -36,9 +36,9 @@ describe MacbethAnalyzer do
       it "contains an array of speaches that each has a speaker and an array of lines" do
         speeches = analyzer.speeches
         expect(speeches[0][:speaker]).to eq "First Witch"
-        expect(speeches[0][:lines].count).to eq 1
+        expect(speeches[0][:line_count]).to eq 1
         expect(speeches[1][:speaker]).to eq "Second Witch"
-        expect(speeches[1][:lines].count).to eq 2
+        expect(speeches[1][:line_count]).to eq 2
       end
     end
 

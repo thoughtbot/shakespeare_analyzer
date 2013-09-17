@@ -2,7 +2,7 @@ require 'open-uri'
 require "nokogiri"
 
 class MacbethAnalyzer
-  attr_accessor :url, :contents
+  attr_reader :url
 
   def initialize
     @url = "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
@@ -20,18 +20,15 @@ class MacbethAnalyzer
       @speeches = Nokogiri::XML(contents).css("SPEECH").map do |speech|
         {
           speaker: speech.at_css("SPEAKER").content,
-          lines: speech.css("LINE").map {|line| line.content }
+          line_count: speech.css("LINE").count
         }
       end
     end 
   end
 
   def analyze
-    speeches.inject({}) do |recorder, speech|
-      unless recorder.has_key? speech[:speaker]
-        recorder[speech[:speaker]] = 0
-      end
-      recorder[speech[:speaker]] += speech[:lines].length
+    speeches.inject(Hash.new(0)) do |recorder, speech|
+      recorder[speech[:speaker]] += speech[:line_count]
       recorder
     end
   end
