@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE PLAY SYSTEM "play.dtd">
+
+<PLAY>
+<SCENE><TITLE>SCENE I.  A desert place.</TITLE>
+
+<SPEECH>
+<SPEAKER>First Witch</SPEAKER>
+<LINE>Where the place?</LINE>
+</SPEECH>
+
+<SPEECH>
+<SPEAKER>Second Witch</SPEAKER>
+<LINE>Upon the heath.</LINE>
+<LINE>Test line.</LINE>
+</SPEECH>
+
+</SCENE>
+</PLAY>
