@@ -87,5 +87,9 @@ describe MacbethAnalyzer do
       result = analyzer.analyze
       expect(result["First Witch"]).to eq 62
     end
+
+    it 'generates the same result with/out using one_step' do
+      expect(analyzer.output).to eq(analyzer.output(one_step: true))
+    end
   end
 end

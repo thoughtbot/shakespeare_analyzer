@@ -34,9 +34,8 @@ class MacbethAnalyzer
   end
 
   def one_step_analyze
-    Nokogiri::XML(contents).xpath("//SPEECH/SPEAKER/following-sibling::LINE").inject(Hash.new(0)) do |recorder, line_node|
-      speaker = line_node.xpath("preceding-sibling::SPEAKER").first.content
-      recorder[speaker] += 1 if speaker != 'ALL'
+    Nokogiri::XML(contents).xpath("//SPEECH[SPEAKER!='ALL']/LINE").inject(Hash.new(0)) do |recorder, line_node|
+      recorder[line_node.xpath("preceding-sibling::SPEAKER").first.content] += 1
       recorder
     end
   end
