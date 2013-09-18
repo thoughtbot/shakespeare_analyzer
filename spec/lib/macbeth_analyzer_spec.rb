@@ -58,6 +58,20 @@ describe MacbethAnalyzer do
           "  1 First Witch"
         ])
       end
+
+      it 'returns an array of string sorted by lines spoke using one_step_analyze' do
+        expect(analyzer).to receive(:one_step_analyze).once.and_call_original
+        expect(analyzer.output(one_step: true)).to eq([
+          "  2 Second Witch",
+          "  1 First Witch"
+        ])
+      end
+    end
+
+    describe "#one_step_analyze" do
+      it 'gives same result as #analyze' do
+        expect(analyzer.analyze).to eq analyzer.one_step_analyze
+      end
     end
   end
 

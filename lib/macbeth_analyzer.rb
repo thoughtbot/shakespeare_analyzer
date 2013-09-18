@@ -33,8 +33,18 @@ class MacbethAnalyzer
     end
   end
 
-  def output
-    analyze.sort_by {|speaker, line_count| line_count * -1 }.map do |speaker, line_count|
+  def one_step_analyze
+    Nokogiri::XML(contents).xpath("//SPEECH/SPEAKER/following-sibling::LINE").inject(Hash.new(0)) do |recorder, line_node|
+      speaker = line_node.xpath("preceding-sibling::SPEAKER").first.content
+      recorder[speaker] += 1 if speaker != 'ALL'
+      recorder
+    end
+  end
+
+  def output(one_step: false)
+    analyzed = (one_step) ? one_step_analyze : analyze
+
+    analyzed.sort_by {|speaker, line_count| line_count * -1 }.map do |speaker, line_count|
       "#{line_count.to_s.rjust(3, " ")} #{speaker}"
     end
   end
