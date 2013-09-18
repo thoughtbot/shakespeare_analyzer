@@ -25,23 +25,6 @@ describe MacbethAnalyzer do
       stub_contents_with("small.xml")  
     end
 
-    it "has many lines" do
-      expect(analyzer.contents.split(/\n/).count).to eq 26
-    end
-
-    describe "#speeches" do
-      it "picks out all the speeches" do
-        expect(analyzer.speeches.count).to eq 3
-      end
-      it "contains an array of speaches that each has a speaker and an array of lines" do
-        speeches = analyzer.speeches
-        expect(speeches[0][:speakers]).to eq ["First Witch"]
-        expect(speeches[0][:line_count]).to eq 1
-        expect(speeches[1][:speakers]).to eq ["Second Witch", "Third Witch"]
-        expect(speeches[1][:line_count]).to eq 2
-      end
-    end
-
     describe "#analyze" do
       it 'returns speakers with the number of lines spoken' do
         expect(analyzer.analyze).to eq({
@@ -60,21 +43,6 @@ describe MacbethAnalyzer do
           "  1 First Witch"
         ])
       end
-
-      it 'returns an array of string sorted by lines spoke using one_step_analyze' do
-        expect(analyzer).to receive(:one_step_analyze).once.and_call_original
-        expect(analyzer.output(one_step: true)).to eq([
-          "  2 Third Witch",
-          "  2 Second Witch",
-          "  1 First Witch"
-        ])
-      end
-    end
-
-    describe "#one_step_analyze" do
-      it 'gives same result as #analyze' do
-        expect(analyzer.analyze).to eq analyzer.one_step_analyze
-      end
     end
   end
 
@@ -89,10 +57,6 @@ describe MacbethAnalyzer do
     it 'returns First Witch to be 62' do
       result = analyzer.analyze
       expect(result["First Witch"]).to eq 62
-    end
-
-    it 'generates the same result with/out using one_step' do
-      expect(analyzer.output).to eq(analyzer.output(one_step: true))
     end
   end
 end
