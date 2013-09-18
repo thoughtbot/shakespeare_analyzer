@@ -19,7 +19,7 @@ class MacbethAnalyzer
     else
       @speeches = Nokogiri::XML(contents).css("SPEECH").map do |speech|
         {
-          speaker: speech.at_css("SPEAKER").content,
+          speakers: speech.css("SPEAKER").map { |speaker| speaker.content },
           line_count: speech.css("LINE").count
         }
       end
@@ -28,14 +28,18 @@ class MacbethAnalyzer
 
   def analyze
     speeches.inject(Hash.new(0)) do |recorder, speech|
-      recorder[speech[:speaker]] += speech[:line_count] unless speech[:speaker] == 'ALL'
+      speech[:speakers].each do |speaker|
+        recorder[speaker] += speech[:line_count] unless speaker == 'ALL'
+      end
       recorder
     end
   end
 
   def one_step_analyze
     Nokogiri::XML(contents).xpath("//SPEECH[SPEAKER!='ALL']/LINE").inject(Hash.new(0)) do |recorder, line_node|
-      recorder[line_node.xpath("preceding-sibling::SPEAKER").first.content] += 1
+      line_node.xpath("preceding-sibling::SPEAKER").each do |speaker|
+        recorder[speaker.content] += 1
+      end
       recorder
     end
   end

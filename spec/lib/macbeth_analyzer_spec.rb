@@ -26,7 +26,7 @@ describe MacbethAnalyzer do
     end
 
     it "has many lines" do
-      expect(analyzer.contents.split(/\n/).count).to eq 25
+      expect(analyzer.contents.split(/\n/).count).to eq 26
     end
 
     describe "#speeches" do
@@ -35,9 +35,9 @@ describe MacbethAnalyzer do
       end
       it "contains an array of speaches that each has a speaker and an array of lines" do
         speeches = analyzer.speeches
-        expect(speeches[0][:speaker]).to eq "First Witch"
+        expect(speeches[0][:speakers]).to eq ["First Witch"]
         expect(speeches[0][:line_count]).to eq 1
-        expect(speeches[1][:speaker]).to eq "Second Witch"
+        expect(speeches[1][:speakers]).to eq ["Second Witch", "Third Witch"]
         expect(speeches[1][:line_count]).to eq 2
       end
     end
@@ -46,7 +46,8 @@ describe MacbethAnalyzer do
       it 'returns speakers with the number of lines spoken' do
         expect(analyzer.analyze).to eq({
           "First Witch" => 1,
-          "Second Witch" => 2
+          "Second Witch" => 2,
+          "Third Witch" => 2
         })
       end
     end
@@ -54,6 +55,7 @@ describe MacbethAnalyzer do
     describe "#output" do
       it 'returns an array of string sorted by lines spoken' do
         expect(analyzer.output).to eq([
+          "  2 Third Witch",
           "  2 Second Witch",
           "  1 First Witch"
         ])
@@ -62,6 +64,7 @@ describe MacbethAnalyzer do
       it 'returns an array of string sorted by lines spoke using one_step_analyze' do
         expect(analyzer).to receive(:one_step_analyze).once.and_call_original
         expect(analyzer.output(one_step: true)).to eq([
+          "  2 Third Witch",
           "  2 Second Witch",
           "  1 First Witch"
         ])
