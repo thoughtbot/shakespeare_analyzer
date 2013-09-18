@@ -15,5 +15,11 @@
 <LINE>Test line.</LINE>
 </SPEECH>
 
+<SPEECH>
+<SPEAKER>ALL</SPEAKER>
+<LINE>Upon the heath.</LINE>
+<LINE>Test line.</LINE>
+</SPEECH>
+
 </SCENE>
 </PLAY>

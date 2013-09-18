@@ -26,12 +26,12 @@ describe MacbethAnalyzer do
     end
 
     it "has many lines" do
-      expect(analyzer.contents.split(/\n/).count).to eq 19
+      expect(analyzer.contents.split(/\n/).count).to eq 25
     end
 
     describe "#speeches" do
       it "picks out all the speeches" do
-        expect(analyzer.speeches.count).to eq 2
+        expect(analyzer.speeches.count).to eq 3
       end
       it "contains an array of speaches that each has a speaker and an array of lines" do
         speeches = analyzer.speeches

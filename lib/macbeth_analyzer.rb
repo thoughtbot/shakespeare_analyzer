@@ -28,7 +28,7 @@ class MacbethAnalyzer
 
   def analyze
     speeches.inject(Hash.new(0)) do |recorder, speech|
-      recorder[speech[:speaker]] += speech[:line_count]
+      recorder[speech[:speaker]] += speech[:line_count] unless speech[:speaker] == 'ALL'
       recorder
     end
   end
