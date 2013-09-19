@@ -5,7 +5,7 @@ require 'spec_helper'
 describe ShakespeareAnalyzer do
   it "handles a missing input file" do
     output =  `bin/shakespeare_analyzer`
-    expect(output).to eq "No input file; terminating\n"
+    expect(output).to eq "usage: shakespeare_analyzer <input-file>\n"
   end
   it "handles an empty input file" do
     output = `bin/shakespeare_analyzer empty.xml`
@@ -130,12 +130,11 @@ EOF
   end
   it "rejects all but HTTP address for an non-local file" do
     analyzer = ShakespeareAnalyzer.new("ftp://testing.xml")
-    expect(analyzer.check_input).to be_nil 
+    expect(analyzer.analyze).to be_nil 
   end
   it "downloads an HTTP file from the web" do
     File.delete('play.xml') if FileTest.exists?('play.xml')
     analyzer = ShakespeareAnalyzer.new("http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml")
-    expect(analyzer.check_input).to be_true
     expect(FileTest.exist?('play.xml')).to be_true
   end
 
@@ -178,4 +177,9 @@ EOF
 #1 Malcolm
 #EOF
 #  end
+  
+  it "handles a missing file in the initialize method" do
+    sa = ShakespeareAnalyzer.new("not_here.xml")
+   expect(sa.analyze).to be_nil
+  end
 end

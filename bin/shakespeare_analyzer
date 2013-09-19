@@ -1,8 +1,12 @@
 #!/usr/bin/env ruby
 load "lib/shakespeare_analyzer.rb"
 
+if ARGV[0].nil? then
+  puts "usage: shakespeare_analyzer <input-file>" 
+  exit 1
+end
+
 analyzer = ShakespeareAnalyzer.new(ARGV[0])
-exit if analyzer.check_input.nil?
 STDERR.puts "Processing file: #{ARGV[0]}"
 analyzer.analyze
 analyzer.list_by_speaker_count

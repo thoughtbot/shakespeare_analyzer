@@ -4,18 +4,13 @@ require 'net/http'
 require 'uri'
 
 class ShakespeareAnalyzer
-  def initialize(file)
+  def initialize(file=nil)
     @file = file
-  end
-
-  def check_input
-    if @file.nil? then
-      puts "No input file; terminating"
-      return nil
-    elsif FileTest.exist?(@file) then
+    if FileTest.exist?(@file) then
       ## Processing a local file
       if File.size(@file) == 0 then
         puts "Empty input file; terminating"
+        @file = nil
         return nil
       end
       return true
@@ -29,6 +24,7 @@ class ShakespeareAnalyzer
     uri = URI(@file)
     if uri.scheme != 'http'
       puts "Not an HTTP file; terminating"
+      @file = nil
       return nil
     end
     @file = 'play.xml'
@@ -42,6 +38,7 @@ class ShakespeareAnalyzer
   end
 
   def analyze
+    return nil if @file.nil?
     doc = Nokogiri::XML(open(@file)) { |config| config.noerror }
     @persona = {}
     doc.css('PERSONA').each do |p|
@@ -66,6 +63,7 @@ class ShakespeareAnalyzer
   end
 
   def list_by_speaker_count
+    return nil if @file.nil?
     sorted_output = (@persona.sort_by {|k,v| v}).reverse
     sorted_output.each do |a| 
       name = (a[0].split(' ').map {|n| n.capitalize }).join(" ")
