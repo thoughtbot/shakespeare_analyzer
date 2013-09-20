@@ -2,6 +2,13 @@ require 'spec_helper'
 require 'xml_parser'
 
 describe XmlParser do
+  describe '#initialize' do
+    it 'instantiates @doc with Nokogiri XML parser' do
+      doc = XmlParser.new(nil).instance_variable_get(:@doc)
+      expect(doc.instance_of?(Nokogiri::XML::Document)).to be true
+    end
+  end
+
   describe '#speakers_sorted_by_line_count' do
     it 'returns hash of speakers with line count sorted by line count' do
       filename = File.dirname(__FILE__) + '/test_files/test.xml'
