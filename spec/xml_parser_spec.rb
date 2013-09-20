@@ -2,21 +2,11 @@ require 'spec_helper'
 require 'xml_parser'
 
 describe XmlParser do
-  describe '#count_lines_by_speaker' do
-    it 'it returns lines count by speaker' do
+  describe '#speakers_sorted_by_line_count' do
+    it 'returns hash of speakers with line count sorted by line count' do
       filename = File.dirname(__FILE__) + '/test_files/test.xml'
       xml_parser = XmlParser.new(File.read(filename))
-      expect(xml_parser.count_lines_by_speaker('Liner')).to be 1
-      expect(xml_parser.count_lines_by_speaker('TwoLiner')).to be 2
-      expect(xml_parser.count_lines_by_speaker('ThreeLiner')).to be 3
-    end
-  end
-
-  describe '#speakers' do
-    it 'returs all speakers in play' do
-      filename = File.dirname(__FILE__) + '/test_files/test.xml'
-      xml_parser = XmlParser.new(File.read(filename))
-      expect(xml_parser.speakers).to eq ['Liner', 'TwoLiner', 'FourLiner', 'ThreeLiner']
+      expect(xml_parser.speakers_sorted_by_line_count.to_a).to eq({'FourLiner' => 4, 'ThreeLiner' => 3, 'TwoLiner' => 2, 'Liner' => 1}.to_a)
     end
   end
 end
