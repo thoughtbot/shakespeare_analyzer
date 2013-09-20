@@ -4,6 +4,9 @@ require_relative 'xml_parser'
 class ShakespeareAnalyzer
   def initialize(uri)
     @file_content = get_content_from_uri(uri)
+  end
+
+  def run
     print_speakers_sorted_by_line_count
   end
 
@@ -30,8 +33,4 @@ class ShakespeareAnalyzer
   def xml_parser
     @_xml_parser ||= XmlParser.new(@file_content)
   end
-end
-
-if __FILE__ == $0
-  ShakespeareAnalyzer.new('http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml')
 end
