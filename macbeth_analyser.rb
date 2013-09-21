@@ -12,7 +12,8 @@ class MacbethAnalyser
     speaker_node = doc.at('SPEAKER')
     if speaker_node
       speaker = speaker_node.text
-      { speaker => 1 }
+      lines = speaker_node.xpath('../LINE').size
+      { speaker => lines }
     else
       {}
     end
