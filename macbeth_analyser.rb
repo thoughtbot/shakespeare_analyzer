@@ -9,13 +9,13 @@ class MacbethAnalyser
 
   def run
     doc = Nokogiri::XML(xml)
-    speaker_node = doc.at('SPEAKER')
-    if speaker_node
-      speaker = speaker_node.text
-      lines = speaker_node.xpath('../LINE').size
-      { speaker => lines }
-    else
-      {}
+    speech_nodes = doc.css('SPEECH')
+    result = {}
+    speech_nodes.map do |speech_node|
+      speaker = speech_node.at('SPEAKER').text
+      result[speaker] = speech_node.css('LINE').size
+      result[speaker]
     end
+    result
   end
 end
