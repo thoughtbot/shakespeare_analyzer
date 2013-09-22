@@ -14,7 +14,6 @@ class MacbethAnalyser
     speech_nodes.map do |speech_node|
       speaker = speech_node.at('SPEAKER').text
       result[speaker] += speech_node.css('LINE').size
-      result[speaker]
     end
     Hash[result.sort_by {|_key, value| value }.reverse]
   end
