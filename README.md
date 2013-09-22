@@ -1,33 +1,14 @@
-***An exercise for Prime subscribers. Visit http://learn.thoughtbot.com/prime to learn more.***
+My attempt at the Thoughtbot Shakespear Analyser.
 
-### Difficulty level: intermediate.
+One tricky aspect would be how to handle lines which are spoken by multiple
+characters at once. These are indicated in the text by `<SPEAKER>ALL</SPEAKER>`.
 
-## Your Task
+One way to accomplishe this would be with a Set tracking who is on stage:
 
-As a Shakespeare buff, statistics junkie, and unix lover, Ben finds himself wanting a command-line tool for analyzing Macbeth.
+  `<STAGEDIR>Enter ROSS</STAGEDIR>` - add Ross to the stage
+  `<STAGEDIR>Exeunt</STAGEDIR>` - clear the set
+  `<STAGEDIR>Enter the three Witches</STAGEDIR>` - remove each of the three witches from the set
+  `<STAGEDIR>Exit Messenger</STAGEDIR>` - remove the Messenger from teh set
 
-Write a command-line program that prints the number of lines spoken by each character in the play.
-
-Sample usage/output (using made-up numbers):
-
-    $ ruby macbeth_analyzer.rb
-      543 Macbeth
-      345 Banquo
-      220 Duncan
-      (etc.)
-
-You can find an XML-encoded version of Macbeth here: http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml. Your program should download and parse this file at runtime.
-
-Your solution must be tested, preferably via TDD.
-
-## Working/Submitting
-
-1. To work on this exercise, fork the repo and begin implementing your solution.
-2. When you are done, copy the output of your program into a file in this repository. 
-3. Create a pull request so your code can be reviewed.
-4. Perform a code review on at least one other person's solution. Your comments should follow our code review guidelines: https://github.com/thoughtbot/guides/tree/master/code-review. Most important: be friendly. Make suggestions, not demands. 
-5. Improve your solution based on the comments you've received and approaches you've learned from reviewing others' attempts.
-
-## Bounty
-
-While knowledge and skill improvement are their own rewards, the author with the best solution (as judged by thoughtbot) will receive a cool thoughtbot t-shirt.
+Then wherever there was a reference to `ALL`, we would read the set and increment
+the line count for each of those characters.
