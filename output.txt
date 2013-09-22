@@ -1,0 +1,41 @@
+MACBETH           719
+LADY MACBETH      265
+MALCOLM           212
+MACDUFF           180
+ROSS              135
+BANQUO            113
+LENNOX            73
+DUNCAN            70
+First Witch       62
+Porter            46
+Doctor            45
+LADY MACDUFF      41
+HECATE            39
+Sergeant          35
+First Murderer    30
+SIWARD            30
+Third Witch       27
+Second Witch      27
+ALL               24
+Gentlewoman       23
+Messenger         23
+Lord              21
+ANGUS             21
+Son               20
+Second Murderer   15
+MENTEITH          12
+Old Man           11
+CAITHNESS         11
+DONALBAIN         10
+Third Murderer    8
+YOUNG SIWARD      7
+Third Apparition  5
+SEYTON            5
+Servant           5
+Second Apparition 4
+Lords             3
+First Apparition  2
+FLEANCE           2
+Both Murderers    2
+ATTENDANT         1
+Soldiers          1
