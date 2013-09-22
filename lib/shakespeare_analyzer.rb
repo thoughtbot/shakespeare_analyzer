@@ -16,7 +16,7 @@ class ShakespeareAnalyzer
   private
 
   def get_file
-    xml = @downloader.download_file
+    @downloader.download_file
   end
 
   def read_lines 
