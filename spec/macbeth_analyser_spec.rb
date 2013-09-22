@@ -71,5 +71,25 @@ describe MacbethAnalyser do
       """
       expect(analyser.run.values).to eq([2, 1])
     end
+
+    it "increments the line count correctly when a speaker has multiple speeches" do
+      @xml = """
+        <PLAY>
+          <SPEECH>
+            <SPEAKER>DUNCAN</SPEAKER>
+            <LINE>What bloody man is that? He can report,</LINE>
+            <LINE>As seemeth by his plight, of the revolt</LINE>
+            <LINE>The newest state.</LINE>
+          </SPEECH>
+          <SPEECH>
+            <SPEAKER>DUNCAN</SPEAKER>
+            <LINE>What bloody man is that? He can report,</LINE>
+            <LINE>As seemeth by his plight, of the revolt</LINE>
+            <LINE>The newest state.</LINE>
+          </SPEECH>
+        </PLAY>
+      """
+      expect(analyser.run).to eq({'DUNCAN' => 6})
+    end
   end
 end
