@@ -6,7 +6,6 @@ describe MacbethAnalyser do
 
     it "returns an empty hash for an empty document" do
       @xml = ""
-      #analyser = MacbethAnalyser.new("")
       expect(analyser.run).to eq({})
     end
 
