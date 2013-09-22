@@ -1,8 +1,8 @@
-require_relative '../macbeth_analyser'
+require_relative '../lib/shakespeare_analyser'
 
-describe MacbethAnalyser do
+describe ShakespeareAnalyser do
   describe "#run" do
-    let(:analyser) { MacbethAnalyser.new(@xml) }
+    let(:analyser) { ShakespeareAnalyser.new(@xml) }
 
     it "returns an empty hash for an empty document" do
       @xml = ""

@@ -1,20 +1,13 @@
-require 'nokogiri'
+require 'open-uri'
+require_relative 'lib/shakespeare_analyser'
 
-class MacbethAnalyser
-  attr_reader :xml
+text = open('http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml')
 
-  def initialize(xml)
-    @xml = xml
-  end
+results = ShakespeareAnalyser.new(text.read).run
 
-  def run
-    doc = Nokogiri::XML(xml)
-    speech_nodes = doc.css('SPEECH')
-    result = Hash.new(0)
-    speech_nodes.map do |speech_node|
-      speaker = speech_node.at('SPEAKER').text
-      result[speaker] += speech_node.css('LINE').size
-    end
-    Hash[result.sort_by( {|character, line_count| line_count }).reverse]
-  end
+longest_name = results.keys.map(&:length).max
+
+results.each do |character, line_count|
+  # format with padding (the - indicates left align)
+  printf("%-#{longest_name}s %s\n", character, line_count)
 end
