@@ -15,6 +15,6 @@ class MacbethAnalyser
       speaker = speech_node.at('SPEAKER').text
       result[speaker] += speech_node.css('LINE').size
     end
-    Hash[result.sort_by {|_key, value| value }.reverse]
+    Hash[result.sort_by( {|character, line_count| line_count }).reverse]
   end
 end
