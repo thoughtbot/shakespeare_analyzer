@@ -1,6 +1,5 @@
 require 'downloader'
 
-
 describe Downloader do
   
   it "returns data from a file or url" do
