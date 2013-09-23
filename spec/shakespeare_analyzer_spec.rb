@@ -3,7 +3,7 @@ require 'shakespeare_analyzer'
 
 describe ShakespeareAnalyzer do
 
-  testfile = OpenStruct.new download_file: %Q|
+  testfile = OpenStruct.new get_xml: %Q|
   <PLAY>
     <ACT>
       <SCENE>
@@ -17,14 +17,14 @@ describe ShakespeareAnalyzer do
     </ACT>
   </PLAY>|
 
-  it "can use a downloader to retrieve a file" do
-    double_downloader = double("double downloader")
-    expect(double_downloader).to receive(:download_file)
-    test_analyzer = ShakespeareAnalyzer.new downloader: double_downloader
+  it "can use a xml retriever object to retrieve a file" do
+    double_xmler = double("double xmler")
+    expect(double_xmler).to receive(:get_xml)
+    test_analyzer = ShakespeareAnalyzer.new xml_provider: double_xmler
   end
     
   it "prints the results" do
-    test_analyzer = ShakespeareAnalyzer.new downloader: testfile
+    test_analyzer = ShakespeareAnalyzer.new xml_provider: testfile
     expect(STDOUT).to receive(:puts).with("Benjamin Sisko: 3 lines")
     test_analyzer.print_lines
   end

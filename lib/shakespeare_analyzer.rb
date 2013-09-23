@@ -3,8 +3,8 @@ require 'rexml/document'
 class ShakespeareAnalyzer
 
   def initialize options = {}
-    @downloader = options[:downloader]
-    @file = REXML::Document.new get_file
+    @xml_provider = options[:xml_provider]
+    @file = REXML::Document.new xml
   end
 
   def print_lines
@@ -15,8 +15,8 @@ class ShakespeareAnalyzer
 
   private
 
-  def get_file
-    @downloader.download_file
+  def xml
+    @xml_provider.get_xml
   end
 
   def read_lines 
