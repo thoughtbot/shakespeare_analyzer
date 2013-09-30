@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'minitest/autorun'
-require './lib/scottish_play'
+require_relative '../lib/scottish_play'
 
 
 describe 'Scottish Play' do
@@ -12,7 +12,7 @@ describe 'Scottish Play' do
 
   it "successfully fetches document" do
     parsed = @scottish_play.fetch_doc(@doc)
-    parsed.type.must == 'XML'
+    assert_equal parsed.type, 'XML'
   end
 end
 
