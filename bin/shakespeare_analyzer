@@ -7,7 +7,5 @@ if ARGV[0].nil? then
 end
 
 analyzer = ShakespeareAnalyzer.new(ARGV[0])
-STDERR.puts "Processing file: #{ARGV[0]}"
 analyzer.analyze
 analyzer.list_by_speaker_count
-STDERR.puts "Processing complete"

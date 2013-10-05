@@ -9,7 +9,6 @@ class ShakespeareAnalyzer
     if FileTest.exist?(@file) then
       ## Processing a local file
       if File.size(@file) == 0 then
-        puts "Empty input file; terminating"
         @file = nil
         return nil
       end
@@ -38,6 +37,7 @@ class ShakespeareAnalyzer
   end
 
   def analyze
+    #TODO: Probably better name of 'parse'
     return nil if @file.nil?
     doc = Nokogiri::XML(open(@file)) { |config| config.noerror }
     @persona = {}
@@ -49,6 +49,7 @@ class ShakespeareAnalyzer
       speakers = speech.css('SPEAKER').each do |s|
         speaker = s.children.text.tr('"','')
         ## Sometimes the speaker is 'ALL', but that depends on who's on stage...
+        ## And we aren't required to calculate this
         if speaker == 'ALL' then
           #@persona.each { |k,v| @persona[k] += 1 }
         else

@@ -7,9 +7,9 @@ describe ShakespeareAnalyzer do
     output =  `bin/shakespeare_analyzer`
     expect(output).to eq "usage: shakespeare_analyzer <input-file>\n"
   end
-  it "handles an empty input file" do
+  it "handles an empty input file by returning an empty result" do
     output = `bin/shakespeare_analyzer empty.xml`
-    expect(output).to eq "Empty input file; terminating\n"
+    expect(output).to eq ""
   end
   it "processes a persona with no speaking" do
     create_testxml("test.xml","<PERSONA>MALCOLM</PERSONA>") 
