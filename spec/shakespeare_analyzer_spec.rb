@@ -31,12 +31,12 @@ describe ShakespeareAnalyzer do
   end
   it "processes one persona with one speech and no lines" do
     create_testxml "test.xml", <<-EOF
-<MAIN>
-<PERSONA>MALCOLM</PERSONA>
-<SPEECH>
-<SPEAKER>MALCOLM</SPEAKER>
-</SPEECH>
-</MAIN>
+    <MAIN>
+    <PERSONA>MALCOLM</PERSONA>
+    <SPEECH>
+    <SPEAKER>MALCOLM</SPEAKER>
+    </SPEECH>
+    </MAIN>
     EOF
     output = `bin/shakespeare_analyzer test.xml`
     expect(output).to eq <<-EOF
@@ -45,20 +45,20 @@ describe ShakespeareAnalyzer do
   end
   it "processes two persona with different speeches and one line" do
     create_testxml "test.xml", <<-EOF
-<main>
-<PERSONA>MALCOLM</PERSONA>
-<PERSONA>MACBETH</PERSONA>
-<SPEECH>
-<SPEAKER>MALCOLM</SPEAKER>
-<LINE>This is a test</LINE>
-</SPEECH>
-<SPEECH>
-<SPEAKER>MACBETH</SPEAKER>
-</SPEECH>
-<SPEECH>
-<SPEAKER>MALCOLM</SPEAKER>
-</SPEECH>
-</main>
+    <MAIN>
+    <PERSONA>MALCOLM</PERSONA>
+    <PERSONA>MACBETH</PERSONA>
+    <SPEECH>
+    <SPEAKER>MALCOLM</SPEAKER>
+    <LINE>This is a test</LINE>
+    </SPEECH>
+    <SPEECH>
+    <SPEAKER>MACBETH</SPEAKER>
+    </SPEECH>
+    <SPEECH>
+    <SPEAKER>MALCOLM</SPEAKER>
+    </SPEECH>
+    </MAIN>
     EOF
     output = `bin/shakespeare_analyzer test.xml`
     expect(output).to eq <<-EOF
@@ -68,19 +68,19 @@ describe ShakespeareAnalyzer do
   end
   it "handles speakers without persona" do
     create_testxml "test.xml", <<-EOF
-<main>
-<PERSONA>MALCOLM</PERSONA>
-<SPEECH>
-<SPEAKER>MALCOLM</SPEAKER>
-</SPEECH>
-<SPEECH>
-<SPEAKER>MACBETH</SPEAKER>
-<LINE>This is a test</LINE>
-</SPEECH>
-<SPEECH>
-<SPEAKER>MALCOLM</SPEAKER>
-</SPEECH>
-</main>
+    <MAIN>
+    <PERSONA>MALCOLM</PERSONA>
+    <SPEECH>
+    <SPEAKER>MALCOLM</SPEAKER>
+    </SPEECH>
+    <SPEECH>
+    <SPEAKER>MACBETH</SPEAKER>
+    <LINE>This is a test</LINE>
+    </SPEECH>
+    <SPEECH>
+    <SPEAKER>MALCOLM</SPEAKER>
+    </SPEECH>
+    </MAIN>
     EOF
     output = `bin/shakespeare_analyzer test.xml`
     expect(output).to eq <<-EOF
@@ -90,35 +90,35 @@ describe ShakespeareAnalyzer do
   end
   it "sorts the output by speaker count" do
     create_testxml "test.xml", <<-EOF
-<main>
-<PERSONA>MALCOLM</PERSONA>
-<PERSONA>MACBETH</PERSONA>
-<PERSONA>DUNCAN</PERSONA>
-<SPEECH>
-<SPEAKER>MALCOLM</SPEAKER>
-<LINE></LINE>
-</SPEECH>
-<SPEECH>
-<SPEAKER>MACBETH</SPEAKER>
-<LINE></LINE>
-<LINE></LINE>
-</SPEECH>
-<SPEECH>
-<SPEAKER>DUNCAN</SPEAKER>
-<LINE></LINE>
-</SPEECH>
-<SPEECH>
-<SPEAKER>MALCOLM</SPEAKER>
-<LINE></LINE>
-</SPEECH>
-<SPEECH>
-<SPEAKER>MACBETH</SPEAKER>
-<LINE></LINE>
-</SPEECH>
-<SPEECH>
-<SPEAKER>LADY MACBETH</SPEAKER>
-</SPEECH>
-</main>
+    <MAIN>
+    <PERSONA>MALCOLM</PERSONA>
+    <PERSONA>MACBETH</PERSONA>
+    <PERSONA>DUNCAN</PERSONA>
+    <SPEECH>
+    <SPEAKER>MALCOLM</SPEAKER>
+    <LINE></LINE>
+    </SPEECH>
+    <SPEECH>
+    <SPEAKER>MACBETH</SPEAKER>
+    <LINE></LINE>
+    <LINE></LINE>
+    </SPEECH>
+    <SPEECH>
+    <SPEAKER>DUNCAN</SPEAKER>
+    <LINE></LINE>
+    </SPEECH>
+    <SPEECH>
+    <SPEAKER>MALCOLM</SPEAKER>
+    <LINE></LINE>
+    </SPEECH>
+    <SPEECH>
+    <SPEAKER>MACBETH</SPEAKER>
+    <LINE></LINE>
+    </SPEECH>
+    <SPEECH>
+    <SPEAKER>LADY MACBETH</SPEAKER>
+    </SPEECH>
+    </MAIN>
     EOF
     output = `bin/shakespeare_analyzer test.xml`
     expect(output).to eq <<-EOF
@@ -140,14 +140,14 @@ describe ShakespeareAnalyzer do
 
   it "handles two speakers on same speech" do
     create_testxml "test.xml", <<-EOF
-<MAIN>
-<PERSONA>MALCOLM</PERSONA>
-<SPEECH>
-<SPEAKER>MALCOLM</SPEAKER>
-<SPEAKER>DUNCAN</SPEAKER>
-<LINE>Testing</LINE>
-</SPEECH>
-</MAIN>
+    <MAIN>
+    <PERSONA>MALCOLM</PERSONA>
+    <SPEECH>
+    <SPEAKER>MALCOLM</SPEAKER>
+    <SPEAKER>DUNCAN</SPEAKER>
+    <LINE>Testing</LINE>
+    </SPEECH>
+    </MAIN>
     EOF
     output = `bin/shakespeare_analyzer test.xml`
     expect(output).to eq <<-EOF
@@ -156,27 +156,27 @@ describe ShakespeareAnalyzer do
     EOF
   end
   #  Can't do this; 'ALL' depends on who's in the scene
-  #  it "handles the ALL speaker" do
-  #    create_testxml "test.xml", <<-EOF
-  #<MAIN>
-  #<PERSONA>MALCOLM</PERSONA>
-  #<PERSONA>DUNCAN</PERSONA>
-  #<SPEECH>
-  #<SPEAKER>DUNCAN</SPEAKER>
-  #<LINE>xxx</LINE>
-  #</SPEECH
-  #<SPEECH>
-  #<SPEAKER>ALL</SPEAKER>
-  #<LINE>Testing</LINE>
-  #</SPEECH>
-  #</MAIN>
-  #EOF
-  #    output = `bin/shakespeare_analyzer test.xml`
-  #    expect(output).to eq <<-EOF
-  #2 Duncan
-  #1 Malcolm
-  #EOF
-  #  end
+  xit "handles the ALL speaker" do
+    create_testxml "test.xml", <<-EOF
+    <MAIN>
+    <PERSONA>MALCOLM</PERSONA>
+    <PERSONA>DUNCAN</PERSONA>
+    <SPEECH>
+    <SPEAKER>DUNCAN</SPEAKER>
+    <LINE>xxx</LINE>
+    </SPEECH
+    <SPEECH>
+    <SPEAKER>ALL</SPEAKER>
+    <LINE>Testing</LINE>
+    </SPEECH>
+    </MAIN>
+    EOF
+    output = `bin/shakespeare_analyzer test.xml`
+    expect(output).to eq <<-EOF
+2 Duncan
+1 Malcolm
+    EOF
+  end
 
   it "handles a missing file in the initialize method" do
     sa = ShakespeareAnalyzer.new("not_here.xml")
