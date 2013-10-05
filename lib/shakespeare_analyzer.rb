@@ -6,39 +6,11 @@ require 'uri'
 class ShakespeareAnalyzer
   def initialize(file=nil)
     @file = file
-    if FileTest.exist?(@file) then
-      ## Processing a local file
-      if File.size(@file) == 0 then
-        @file = nil
-        return nil
-      end
-      return true
-    else
-      ## Must be a remote file
-      return get_http_file
-    end
-  end
-
-  def get_http_file
-    uri = URI(@file)
-    if uri.scheme != 'http'
-      puts "Not an HTTP file; terminating"
-      @file = nil
-      return nil
-    end
-    @file = 'play.xml'
-    Net::HTTP.start(uri.host) do |http|
-      resp = http.get(uri.path)
-      open(@file, 'wb') do |file|
-        file.write(resp.body)
-      end
-    end
-    true
   end
 
   def analyze
     #TODO: Probably better name of 'parse'
-    return nil if @file.nil?
+    @file = checked_file_for_open
     doc = Nokogiri::XML(open(@file)) { |config| config.noerror }
     @persona = {}
     doc.css('PERSONA').each do |p|
@@ -71,4 +43,26 @@ class ShakespeareAnalyzer
       puts "#{a[1]} #{name}" 
     end
   end
+
+  def checked_file_for_open
+    return @file if File.file?(@file)
+    get_http_file
+    return @file
+  end
+
+  def get_http_file
+    uri = URI(@file)
+    if uri.scheme != 'http'
+      raise "Unreadable file"
+    end
+    @file = 'play.xml'
+    Net::HTTP.start(uri.host) do |http|
+      resp = http.get(uri.path)
+      open(@file, 'wb') do |file|
+        file.write(resp.body)
+      end
+    end
+    @file
+  end
+
 end

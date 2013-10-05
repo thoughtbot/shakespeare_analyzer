@@ -128,15 +128,12 @@ describe ShakespeareAnalyzer do
 0 Lady Macbeth
     EOF
   end
-  it "rejects all but HTTP address for an non-local file" do
-    analyzer = ShakespeareAnalyzer.new("ftp://testing.xml")
-    expect(analyzer.analyze).to be_nil 
-  end
-  it "downloads an HTTP file from the web" do
-    File.delete('play.xml') if FileTest.exists?('play.xml')
-    analyzer = ShakespeareAnalyzer.new("http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml")
-    expect(FileTest.exist?('play.xml')).to be_true
-  end
+
+  #it "downloads an HTTP file from the web" do
+  #  File.delete('play.xml') if FileTest.exists?('play.xml')
+  #  analyzer = ShakespeareAnalyzer.new("http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml")
+  #  expect(FileTest.exist?('play.xml')).to be_true
+  #end
 
   it "handles two speakers on same speech" do
     create_testxml "test.xml", <<-EOF
@@ -155,6 +152,7 @@ describe ShakespeareAnalyzer do
 1 Malcolm
     EOF
   end
+
   #  Can't do this; 'ALL' depends on who's in the scene
   xit "handles the ALL speaker" do
     create_testxml "test.xml", <<-EOF
@@ -178,8 +176,26 @@ describe ShakespeareAnalyzer do
     EOF
   end
 
-  it "handles a missing file in the initialize method" do
-    sa = ShakespeareAnalyzer.new("not_here.xml")
-    expect(sa.analyze).to be_nil
+  describe '#checked_file_for_open' do
+  require 'shakespeare_analyzer'
+    before do
+    end
+     it "returns a 'real' file if given one" do
+       @sa = ShakespeareAnalyzer.new ("test.xml")
+       @file = @sa.checked_file_for_open
+       expect(File.file?(@file)).to be_true
+     end
+     it "returns a 'real' file if given a URI reference" do
+       @sa = ShakespeareAnalyzer.new("http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml")
+       @file = @sa.checked_file_for_open
+       expect(File.file?(@file)).to be_true
+     end
+     it "raises an exception of given an invalid file name" do
+       @sa = ShakespeareAnalyzer.new ("not_there.xml")
+       expect{
+         @sa.checked_file_for_open
+       }.to raise_error "Unreadable file"
+       
+     end
   end
 end
