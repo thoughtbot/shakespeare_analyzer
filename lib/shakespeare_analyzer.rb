@@ -4,7 +4,7 @@ require 'net/http'
 require 'uri'
 
 class ShakespeareAnalyzer
-  def initialize(file=nil)
+  def initialize(file)
     @file = file
   end
 
@@ -20,23 +20,18 @@ class ShakespeareAnalyzer
     doc.css('SPEECH').each do |speech|
       speakers = speech.css('SPEAKER').each do |s|
         speaker = s.children.text.tr('"','')
-        ## Sometimes the speaker is 'ALL', but that depends on who's on stage...
-        ## And we aren't required to calculate this
-        if speaker == 'ALL' then
-          #@persona.each { |k,v| @persona[k] += 1 }
-        else
-          ### Turns out there are speakers without @persona!
-          @persona[speaker] = 0 if @persona[speaker].nil?
-          speech.css('LINE').each do |line|
-            @persona[speaker] += 1
-          end
+        ## Sometimes the speaker is 'ALL', but who that is depends on who's on stage...
+        ## Ignoring this for now
+        ## Turns out there are speakers without @persona!
+        @persona[speaker] = 0 if @persona[speaker].nil?
+        speech.css('LINE').each do |line|
+          @persona[speaker] += 1
         end
       end
     end
   end
 
   def list_by_speaker_count
-    return nil if @file.nil?
     sorted_output = (@persona.sort_by {|k,v| v}).reverse
     sorted_output.each do |a| 
       name = (a[0].split(' ').map {|n| n.capitalize }).join(" ")
@@ -46,8 +41,7 @@ class ShakespeareAnalyzer
 
   def checked_file_for_open
     return @file if File.file?(@file)
-    get_http_file
-    return @file
+    return get_http_file
   end
 
   def get_http_file
