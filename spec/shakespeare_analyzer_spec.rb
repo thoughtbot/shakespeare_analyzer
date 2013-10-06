@@ -177,25 +177,26 @@ describe ShakespeareAnalyzer do
   end
 
   describe '#checked_file_for_open' do
-  require 'shakespeare_analyzer'
+    require 'shakespeare_analyzer'
     before do
     end
-     it "returns a 'real' file if given one" do
-       @sa = ShakespeareAnalyzer.new ("test.xml")
-       @file = @sa.checked_file_for_open
-       expect(File.file?(@file)).to be_true
-     end
-     it "returns a 'real' file if given a URI reference" do
-       @sa = ShakespeareAnalyzer.new("http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml")
-       @file = @sa.checked_file_for_open
-       expect(File.file?(@file)).to be_true
-     end
-     it "raises an exception of given an invalid file name" do
-       @sa = ShakespeareAnalyzer.new ("not_there.xml")
-       expect{
-         @sa.checked_file_for_open
-       }.to raise_error "Unreadable file"
-       
-     end
+    it "returns a 'real' file if given one" do
+      @sa = ShakespeareAnalyzer.new ("test.xml")
+      @file = @sa.checked_file_for_open
+      expect(File.file?(@file)).to be_true
+    end
+    it "returns a 'real' file if given a URI reference" do
+      @sa = ShakespeareAnalyzer.new("http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml")
+      @file = @sa.checked_file_for_open
+      expect(File.file?(@file)).to be_true
+    end
+    ["not_there.xml", "http://www.ibiblio.org/xml/examples/not_there.xml"].each do |bad_file|
+      it "raises an exception if given an invalid file name" do
+        @sa = ShakespeareAnalyzer.new (bad_file)
+        expect{
+          @sa.checked_file_for_open
+        }.to raise_error "Unreadable file"
+      end
+    end
   end
 end

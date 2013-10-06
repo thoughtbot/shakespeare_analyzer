@@ -52,12 +52,11 @@ class ShakespeareAnalyzer
 
   def get_http_file
     uri = URI(@file)
-    if uri.scheme != 'http'
-      raise "Unreadable file"
-    end
+    raise "Unreadable file" if uri.scheme != "http"
     @file = 'play.xml'
     Net::HTTP.start(uri.host) do |http|
       resp = http.get(uri.path)
+      raise "Unreadable file" unless (resp.code.to_i >= 200 && resp.code.to_i <= 299)
       open(@file, 'wb') do |file|
         file.write(resp.body)
       end
