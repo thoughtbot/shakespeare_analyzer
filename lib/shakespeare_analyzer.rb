@@ -6,17 +6,14 @@ require 'uri'
 class ShakespeareAnalyzer
   def initialize(file)
     @file = file
+    @persona = {}
   end
 
   def analyze
     #TODO: Probably better name of 'parse'
     @file = checked_file_for_open
     doc = Nokogiri::XML(open(@file)) { |config| config.noerror }
-    @persona = {}
-    doc.css('PERSONA').each do |p|
-      pname = p.children.text.tr('"','')
-      @persona[pname] = 0
-    end
+    get_persona(doc)
     doc.css('SPEECH').each do |speech|
       speakers = speech.css('SPEAKER').each do |s|
         speaker = s.children.text.tr('"','')
@@ -28,6 +25,12 @@ class ShakespeareAnalyzer
           @persona[speaker] += 1
         end
       end
+    end
+  end
+  def get_persona(doc)
+    doc.css('PERSONA').each do |p|
+      pname = p.children.text.tr('"','')
+      @persona[pname] = 0
     end
   end
 
