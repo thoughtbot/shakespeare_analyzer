@@ -26,17 +26,21 @@ class ShakespeareAnalyzer
 
   def analyze_speeches(doc)
     doc.css('SPEECH').each do |speech|
-      speakers = speech.css('SPEAKER').each do |s|
-        speaker = s.children.text.tr('"','')
+      speech.css('SPEAKER').each do |speaker|
+        get_speaker_lines(speaker, speech)
+      end
+    end
+  end
+  
+  def get_speaker_lines(speaker, speech)
+        speaker_name = speaker.children.text.tr('"','')
         ## Sometimes the speaker is 'ALL', but who that is depends on who's on stage...
         ## Ignoring this for now
         ## Turns out there are speakers without @persona!
-        @persona[speaker] = 0 if @persona[speaker].nil?
+        @persona[speaker_name] = 0 if @persona[speaker_name].nil?
         speech.css('LINE').each do |line|
-          @persona[speaker] += 1
+          @persona[speaker_name] += 1
         end
-      end
-    end
   end
 
   def list_by_speaker_count
