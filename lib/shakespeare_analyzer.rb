@@ -14,7 +14,7 @@ class ShakespeareAnalyzer
     @file = checked_file_for_open
     doc = Nokogiri::XML(open(@file)) { |config| config.noerror }
     get_persona(doc)
-    get_speaker_lines(doc)
+    analyze_speeches(doc)
   end
 
   def get_persona(doc)
@@ -24,7 +24,7 @@ class ShakespeareAnalyzer
     end
   end
 
-  def get_speaker_lines(doc)
+  def analyze_speeches(doc)
     doc.css('SPEECH').each do |speech|
       speakers = speech.css('SPEAKER').each do |s|
         speaker = s.children.text.tr('"','')
