@@ -31,16 +31,16 @@ class ShakespeareAnalyzer
       end
     end
   end
-  
+
   def get_speaker_lines(speaker, speech)
-        speaker_name = speaker.children.text.tr('"','')
-        ## Sometimes the speaker is 'ALL', but who that is depends on who's on stage...
-        ## Ignoring this for now
-        ## Turns out there are speakers without @persona!
-        @persona[speaker_name] = 0 if @persona[speaker_name].nil?
-        speech.css('LINE').each do |line|
-          @persona[speaker_name] += 1
-        end
+    ## Sometimes the speaker is 'ALL', but who that is depends on who's on stage...
+    ## Ignoring this for now
+    ## Turns out there are speakers without @persona!
+    speaker_name = speaker.children.text.tr('"','')
+    @persona[speaker_name] = 0 if @persona[speaker_name].nil?
+    speech.css('LINE').each do |line|
+      @persona[speaker_name] += 1
+    end
   end
 
   def list_by_speaker_count
