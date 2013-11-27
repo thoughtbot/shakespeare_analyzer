@@ -8,10 +8,13 @@ class ShakespeareAnalyzer
 		analyze_speeches
 	end
 
-	def print_lines_per_speaker!
+	def lines_per_speaker(write=true)
+		output = ""
 		most_verbose_speakers.each do |name, line_count|
-			puts "#{line_count}\t#{name}"
+			output << "#{line_count}\t#{name}\n"
 		end
+		print output if write
+		output
 	end
 
 	private
