@@ -6,3 +6,24 @@ Nokogiri::XML(open("http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
   lines   = speech.search('LINE').count
   obj.tap { |o| o[speaker] += lines }
 end.sort_by {|a, b| -b}.each { |speaker, count| puts "#{count.to_s.rjust(3)}  #{speaker}" }
+
+module Catalogue
+  def find(play)
+    raise NotImplementedError
+  end
+end
+
+class Ibiblio
+  extend Catalogue
+
+  def self.find(play)
+
+  end
+end
+
+play = Ibiblio.find('Macbeth')
+
+# downloading / catalogue?
+# xml parsing
+# play/speech/lines
+# counter/aggregator
