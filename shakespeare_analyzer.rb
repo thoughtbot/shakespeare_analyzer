@@ -56,4 +56,10 @@ class ShakespeareAnalyzer
       @result[speaker] =  (@result[speaker] + lines)
     end
   end
+  
+  def print_result
+    @result.each do |name,lines|
+      puts "#{lines} #{name}"
+    end
+  end
 end

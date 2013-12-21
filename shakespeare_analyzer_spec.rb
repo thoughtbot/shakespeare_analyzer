@@ -100,6 +100,7 @@ describe "ShakespeareAnalyzer" do
     analyzer = ShakespeareAnalyzer.new(doc)
     analyzer.analyze
     result = analyzer.result
+    analyzer.print_result
     expect(result).to eq({"First Witch"=>62, "Second Witch"=>27, "Third Witch"=>27, "ALL"=>24, "DUNCAN"=>70, "MALCOLM"=>212, "Sergeant"=>35, "LENNOX"=>73, "ROSS"=>135, "MACBETH"=>718, "BANQUO"=>113, "ANGUS"=>21, "LADY MACBETH"=>265, "Messenger"=>23, "FLEANCE"=>2, "Porter"=>46, "MACDUFF"=>180, "MACBETHLENNOX"=>1, "DONALBAIN"=>10, "Old Man"=>11, "ATTENDANT"=>1, "First Murderer"=>30, "Second Murderer"=>15, "Both Murderers"=>2, "Servant"=>5, "Third Murderer"=>8, "Lords"=>3, "HECATE"=>39, "Lord"=>21, "First Apparition"=>2, "Second Apparition"=>4, "Third Apparition"=>5, "LADY MACDUFF"=>41, "Son"=>20, "Doctor"=>45, "Gentlewoman"=>23, "MENTEITH"=>12, "CAITHNESS"=>11, "SEYTON"=>5, "SIWARD"=>30, "Soldiers"=>1, "YOUNG SIWARD"=>7})
   end
 end
