@@ -1,5 +1,3 @@
-require 'open-uri'
-require 'nokogiri'
 require_relative 'speech'
 class ShakespeareAnalyzer
   attr_accessor :doc,:result
