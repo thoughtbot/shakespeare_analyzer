@@ -1,42 +1,42 @@
-62 First Witch
-27 Second Witch
-27 Third Witch
-24 ALL
-70 DUNCAN
-212 MALCOLM
-35 Sergeant
-73 LENNOX
-135 ROSS
-718 MACBETH
-113 BANQUO
-21 ANGUS
-265 LADY MACBETH
-23 Messenger
-2 FLEANCE
+718 Macbeth
+265 Lady macbeth
+212 Malcolm
+180 Macduff
+135 Ross
+113 Banquo
+73 Lennox
+70 Duncan
+62 First witch
 46 Porter
-180 MACDUFF
-1 MACBETHLENNOX
-10 DONALBAIN
-11 Old Man
-1 ATTENDANT
-30 First Murderer
-15 Second Murderer
-2 Both Murderers
-5 Servant
-8 Third Murderer
-3 Lords
-39 HECATE
-21 Lord
-2 First Apparition
-4 Second Apparition
-5 Third Apparition
-41 LADY MACDUFF
-20 Son
 45 Doctor
+41 Lady macduff
+39 Hecate
+35 Sergeant
+30 First murderer
+30 Siward
+27 Third witch
+27 Second witch
+24 All
 23 Gentlewoman
-12 MENTEITH
-11 CAITHNESS
-5 SEYTON
-30 SIWARD
+23 Messenger
+21 Lord
+21 Angus
+20 Son
+15 Second murderer
+12 Menteith
+11 Old man
+11 Caithness
+10 Donalbain
+8 Third murderer
+7 Young siward
+5 Third apparition
+5 Seyton
+5 Servant
+4 Second apparition
+3 Lords
+2 First apparition
+2 Fleance
+2 Both murderers
+1 Attendant
 1 Soldiers
-7 YOUNG SIWARD
+1 Macbethlennox
