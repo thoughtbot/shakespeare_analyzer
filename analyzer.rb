@@ -1,8 +1,8 @@
-require_relative 'shakespeare_analyzer'
-
+require_relative 'lib/http_content.rb'
+require_relative 'lib/shakespeare_analyzer'
 macbeth_url = "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
-doc = Nokogiri::XML(open(macbeth_url))
-shakespeare_analyzer = ShakespeareAnalyzer.new(doc)
-shakespeare_analyzer.analyze
-result = shakespeare_analyzer.result
-shakespeare_analyzer.print_result
+content = HttpContent.new(macbeth_url)
+analyzer = ShakespeareAnalyzer.new(content.data)
+analyzer.analyze
+result = analyzer.result
+analyzer.print_result

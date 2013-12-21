@@ -1,5 +1,5 @@
 require 'open-uri'
-require 'content'
+require_relative 'content'
 require 'nokogiri'
 class HttpContent < Content
   def get_content_from_source
