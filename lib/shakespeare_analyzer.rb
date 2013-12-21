@@ -55,9 +55,17 @@ class ShakespeareAnalyzer
     end
   end
   
+  def sort_result
+    @result.sort_by { |name, lines| lines }.reverse
+  end
+  
+  def format_result
+    sort_result
+  end
+  
   def print_result
-    @result.each do |name,lines|
-      puts "#{lines} #{name}"
+    format_result.each do |name,lines|
+      puts "#{lines} #{name.downcase.capitalize}"
     end
   end
 end
