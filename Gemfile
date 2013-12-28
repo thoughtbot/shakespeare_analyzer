@@ -1,6 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rake'
 gem 'nokogiri'
-gem 'aruba', :group => :test
-gem 'webmock', :group => :test
+
+group :test do
+  gem 'aruba'
+  gem 'webmock'
+  gem 'vcr'
+end
+
+group :development do
+  gem 'rake'
+end
