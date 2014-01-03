@@ -6,14 +6,7 @@ class Play
 	attr_accessor :document
 
 	def initialize(play_location)
-		unless play_location.is_a? File
-			if play_location.match(/^http/)
-				play_location = open(play_location)
-			else
-				play_location = File.open(play_location, 'r')
-			end
-		end
-		@document = Nokogiri::XML(play_location)
+		@play_location = play_location
 	end
 
 	def speeches
@@ -21,4 +14,27 @@ class Play
 			Speech.new speech
 		end
 	end
+
+	def document
+		@document ||= Nokogiri::XML(play_data)
+	end
+
+	private
+		def play_data
+			if location_is_a_file?
+				@play_location
+			elsif location_is_a_url?
+				open(@play_location)
+			else
+				File.open(@play_location, 'r')
+			end
+		end
+
+		def location_is_a_file?
+			@play_location.is_a? File
+		end
+
+		def location_is_a_url?
+			@play_location.match(/^http/)
+		end
 end
