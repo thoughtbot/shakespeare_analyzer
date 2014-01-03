@@ -7,7 +7,7 @@ class Play
   end
 
   def characters_and_their_number_of_lines
-    find_from_root(:speech, in: xml).inject Hash.new(0) do |accumulator, speech|
+    find_tag_from_root(:speech, in: xml).inject Hash.new(0) do |accumulator, speech|
       accumulator[speaker_in speech] += number_of_lines_in speech
       accumulator
     end
@@ -31,7 +31,7 @@ class Play
     options[:in].xpath(tag_name.to_s.upcase)
   end
 
-  def find_from_root tag_name, options
+  def find_tag_from_root tag_name, options
     find_tag :"//#{tag_name}", options
   end
 end
