@@ -19,10 +19,6 @@ class Play
     Nokogiri::XML.parse @raw_xml
   end
 
-  def find_nodes xpath_selector, options
-    options.fetch(:within).xpath(xpath_selector)
-  end
-
   def number_of_lines_in speech
     find(:line, in: speech).count
   end
