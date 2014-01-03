@@ -20,18 +20,18 @@ class Play
   end
 
   def number_of_lines_in speech
-    find(:line, in: speech).count
+    find_tag(:line, in: speech).count
   end
 
   def speaker_in speech
-    find(:speaker, in: speech).text.titleize
+    find_tag(:speaker, in: speech).text.titleize
   end
 
-  def find tag_name, options
+  def find_tag tag_name, options
     options[:in].xpath(tag_name.to_s.upcase)
   end
 
   def find_from_root tag_name, options
-    find :"//#{tag_name}", options
+    find_tag :"//#{tag_name}", options
   end
 end
