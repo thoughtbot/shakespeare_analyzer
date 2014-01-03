@@ -1,0 +1,22 @@
+<PLAY>
+    <TITLE>A Tale of Two Rubyists: The Chunkiest Bacon</TITLE>
+    <ACT>
+        <TITLE>ACT I</TITLE>
+        <SCENE>
+            <TITLE>SCENE I. An Introduction</TITLE>
+            <SPEECH>
+                <SPEAKER>FOX 1</SPEAKER>
+                <LINE>Lorem ipsum dolor sit amet...</LINE>
+            </SPEECH>
+            <SPEECH>
+                <SPEAKER>FOX 2</SPEAKER>
+                <LINE>This is boring, I'm out.</LINE>
+            </SPEECH>
+            <SPEECH>
+                <SPEAKER>FOX 1</SPEAKER>
+                <SPEAKER>FOX 2</SPEAKER>
+                <LINE>CHUNKY BACON!</LINE>
+            </SPEECH>
+        </SCENE>
+    </ACT>
+</PLAY>
