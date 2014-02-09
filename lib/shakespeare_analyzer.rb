@@ -1,24 +1,32 @@
 require 'nokogiri'
 
 class ShakespeareAnalyzer
-  attr_reader :xml
+  attr_reader :xml, :results
 
   def initialize(xml)
     @xml = xml
+    @results = Hash.new(0)
   end
 
   def run
     doc = Nokogiri::XML(xml)
     @speeches = doc.css('SPEECH')
-    speakers = get_speakers_from_speeches
+    get_speakers_from_speeches
+    results
   end
 
   def get_speakers_from_speeches
-    results = Hash.new(0)
     @speeches.map do |speech|
-      speaker = speech.css('SPEAKER').text
-      results[speaker] += speech.css('LINE').length
+      speaking = speech.css('SPEAKER')
+      line_count = speech.css('LINE').length
+      update_line_counts(speaking, line_count)
     end
-    results
+  end
+
+  def update_line_counts(speaking, line_count)
+    speaking.each do |speaker|
+      speaker = speaker.text
+      results[speaker] += line_count
+    end
   end
 end

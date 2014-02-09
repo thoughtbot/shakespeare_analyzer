@@ -20,5 +20,17 @@ describe ShakespeareAnalyzer do
 
       expect(analyzer.run).to eq({'First Witch' => 2})
     end
+
+    it 'counts the lines for multiple speakers in a speech' do
+      @xml = <<-eof
+        <SPEECH>
+          <SPEAKER>MACBETH</SPEAKER>
+          <SPEAKER>LENNOX</SPEAKER>
+          <LINE>What's the matter.</LINE>
+        </SPEECH>
+      eof
+
+      expect(analyzer.run).to eq({'MACBETH' => 1, 'LENNOX' => 1})
+    end
   end
 end
