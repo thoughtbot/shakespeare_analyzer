@@ -11,15 +11,19 @@ class XmlParser
   end
   
   def count_lines(element)
-    node_set = element.xpath(".//LINE")
-    node_set.count
+    element.xpath(".//LINE").count
+  end
+  
+  def get_speakers(element)
+    element.xpath(".//SPEAKER").map(&:text)
   end
   
   def parse_speeches
     @doc.xpath("//SPEECH").each do |speech|
-      speaker = speech.xpath(".//SPEAKER").text
-      @speech_count[speaker] ||= 0
-      @speech_count[speaker] += count_lines(speech)
+      get_speakers(speech).each do |speaker|
+        @speech_count[speaker] ||= 0
+        @speech_count[speaker] += count_lines(speech)
+      end
     end
   end
   

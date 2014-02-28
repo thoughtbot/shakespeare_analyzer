@@ -32,6 +32,18 @@ describe XmlParser do
     end
   end
   
+  describe '#get_speakers' do
+    it "should return speakers in an array in the given element" do
+      element = double()
+      node_set = double()
+      element.should_receive(:xpath).with(".//SPEAKER").and_return([node_set, node_set])
+      node_set.should_receive(:text).twice.and_return("blah")
+  
+      parsed = XmlParser.new(xml_doc)
+      parsed.get_speakers(element).should == ["blah", "blah"]
+    end
+  end
+  
   describe '#parse_speeches' do
     it "should get nodes with SPEECH name and iterate through them" do
       parsed = XmlParser.new(xml_doc)
