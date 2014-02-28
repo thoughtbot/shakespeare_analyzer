@@ -23,4 +23,14 @@ class XmlParser
     end
   end
   
+  def sort_speech_count
+    (@speech_count.sort_by {|k,v| v}).reverse
+  end
+  
+  def print_result
+    sort_speech_count.each do |result|
+      puts "#{result[1]} #{result[0]}"
+    end
+  end
+  
 end
