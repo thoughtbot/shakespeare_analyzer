@@ -1,0 +1,110 @@
+<PLAY>
+<TITLE>The Tragedy of Macbeth</TITLE>
+<FM>
+<P>
+Text placed in the public domain by Moby Lexical Tools, 1992.
+</P>
+<P>SGML markup by Jon Bosak, 1992-1994.</P>
+<P>XML version by Jon Bosak, 1996-1998.</P>
+<P>
+This work may be freely copied and distributed worldwide.
+</P>
+</FM>
+<PERSONAE>
+<TITLE>Dramatis Personae</TITLE>
+<PERSONA>DUNCAN, king of Scotland.</PERSONA>
+<PGROUP>
+<PERSONA>MALCOLM</PERSONA>
+<PERSONA>DONALBAIN</PERSONA>
+<GRPDESCR>his sons.</GRPDESCR>
+</PGROUP>
+<PGROUP>
+<PERSONA>MACBETH</PERSONA>
+<PERSONA>BANQUO</PERSONA>
+<GRPDESCR>generals of the king's army.</GRPDESCR>
+</PGROUP>
+<PGROUP>
+<PERSONA>MACDUFF</PERSONA>
+<PERSONA>LENNOX</PERSONA>
+<PERSONA>ROSS</PERSONA>
+<PERSONA>MENTEITH</PERSONA>
+<PERSONA>ANGUS</PERSONA>
+<PERSONA>CAITHNESS</PERSONA>
+<GRPDESCR>noblemen of Scotland.</GRPDESCR>
+</PGROUP>
+<PERSONA>FLEANCE, son to Banquo.</PERSONA>
+<PERSONA>
+SIWARD, Earl of Northumberland, general of the English forces.
+</PERSONA>
+<PERSONA>YOUNG SIWARD, his son.</PERSONA>
+<PERSONA>SEYTON, an officer attending on Macbeth.</PERSONA>
+<PERSONA>Boy, son to Macduff.</PERSONA>
+<PERSONA>An English Doctor.</PERSONA>
+<PERSONA>A Scotch Doctor.</PERSONA>
+<PERSONA>A Soldier.</PERSONA>
+<PERSONA>A Porter.</PERSONA>
+<PERSONA>An Old Man.</PERSONA>
+<PERSONA>LADY MACBETH</PERSONA>
+<PERSONA>LADY MACDUFF</PERSONA>
+<PERSONA>Gentlewoman attending on Lady Macbeth.</PERSONA>
+<PERSONA>HECATE</PERSONA>
+<PERSONA>Three Witches.</PERSONA>
+<PERSONA>Apparitions.</PERSONA>
+<PERSONA>
+Lords, Gentlemen, Officers, Soldiers, Murderers, Attendants, and Messengers.
+</PERSONA>
+</PERSONAE>
+<SCNDESCR>SCENE Scotland: England.</SCNDESCR>
+<PLAYSUBT>MACBETH</PLAYSUBT>
+<ACT>
+<TITLE>ACT I</TITLE>
+<SCENE>
+<TITLE>SCENE I. A desert place.</TITLE>
+<STAGEDIR>Thunder and lightning. Enter three Witches</STAGEDIR>
+<SPEECH>
+<SPEAKER>First Witch</SPEAKER>
+<LINE>When shall we three meet again</LINE>
+<LINE>In thunder, lightning, or in rain?</LINE>
+</SPEECH>
+<SPEECH>
+<SPEAKER>Second Witch</SPEAKER>
+<LINE>When the hurlyburly's done,</LINE>
+<LINE>When the battle's lost and won.</LINE>
+</SPEECH>
+<SPEECH>
+<SPEAKER>Third Witch</SPEAKER>
+<LINE>That will be ere the set of sun.</LINE>
+</SPEECH>
+<SPEECH>
+<SPEAKER>First Witch</SPEAKER>
+<LINE>Where the place?</LINE>
+</SPEECH>
+<SPEECH>
+<SPEAKER>Second Witch</SPEAKER>
+<LINE>Upon the heath.</LINE>
+</SPEECH>
+<SPEECH>
+<SPEAKER>Third Witch</SPEAKER>
+<LINE>There to meet with Macbeth.</LINE>
+</SPEECH>
+<SPEECH>
+<SPEAKER>First Witch</SPEAKER>
+<LINE>I come, Graymalkin!</LINE>
+</SPEECH>
+<SPEECH>
+<SPEAKER>Second Witch</SPEAKER>
+<LINE>Paddock calls.</LINE>
+</SPEECH>
+<SPEECH>
+<SPEAKER>Third Witch</SPEAKER>
+<LINE>Anon.</LINE>
+</SPEECH>
+<SPEECH>
+<SPEAKER>ALL</SPEAKER>
+<LINE>Fair is foul, and foul is fair:</LINE>
+<LINE>Hover through the fog and filthy air.</LINE>
+</SPEECH>
+<STAGEDIR>Exeunt</STAGEDIR>
+</SCENE>
+</ACT>
+</PLAY>
