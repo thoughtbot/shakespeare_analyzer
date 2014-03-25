@@ -1,3 +1,4 @@
+require 'open-uri'
 require 'pp'
 require 'nokogiri'
 
@@ -66,7 +67,15 @@ class StatsPrinter
   private
 
   def capitalize_words(word)
-    word.gsub!(/(\w)(\w*)/) { $1.upcase << $2.downcase }
+    word.gsub(/(\w)(\w*)/) { $1.upcase << $2.downcase }
+  end
+end
+
+
+if $0 == __FILE__
+  open('http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml') do |f|
+    stats = LinesParser.new(f.read).parse
+    StatsPrinter.new(stats, $stdout).print
   end
 end
 
