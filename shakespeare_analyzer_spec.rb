@@ -113,3 +113,28 @@ XML
     expect(parse(xml)).to eq([stat('Someone', 1)])
   end
 end
+
+
+describe StatsPrinter do
+  it 'prints to supplied IO object' do
+    mock_io = double('io', :puts => nil)
+    stats = [SpeakerStats.new('John', 83), SpeakerStats.new('Anna', 5)]
+
+    expect(mock_io).to receive(:puts).with('83 John').ordered
+    expect(mock_io).to receive(:puts).with('5 Anna').ordered
+
+    printer = StatsPrinter.new(stats , mock_io)
+    printer.print
+  end
+
+  it 'capitalizes speaker names' do
+    mock_io = double('io', :puts => nil)
+    stats = [SpeakerStats.new('OLD Guy f tHE fOrEsT', 3)]
+
+    expect(mock_io).to receive(:puts).with('3 Old Guy F The Forest')
+
+    printer = StatsPrinter.new(stats, mock_io)
+    printer.print
+  end
+end
+

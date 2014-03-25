@@ -1,6 +1,9 @@
 require 'pp'
 require 'nokogiri'
 
+SpeakerStats = Class.new(Struct.new(:speaker, :lines_count))
+
+
 class LinesParser
   def initialize(xml)
     @doc = Nokogiri::XML(xml)
@@ -46,4 +49,24 @@ class LinesParser
   end
 end
 
-SpeakerStats = Class.new(Struct.new(:speaker, :lines_count))
+
+class StatsPrinter
+  def initialize(stats, io)
+    @stats = stats
+    @io = io
+  end
+
+  def print
+    @stats.each do |stat|
+      speaker = capitalize_words(stat.speaker)
+      @io.puts("#{stat.lines_count} #{speaker}")
+    end
+  end
+
+  private
+
+  def capitalize_words(word)
+    word.gsub!(/(\w)(\w*)/) { $1.upcase << $2.downcase }
+  end
+end
+
