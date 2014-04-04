@@ -1,0 +1,11 @@
+Encoding:
+  Enabled: false
+
+AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Documentation:
+  Enabled: false
+
+ModuleFunction:
+  Enabled: false
