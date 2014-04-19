@@ -1,14 +1,13 @@
 class MacbethAnalyzer
-	def initialize(output = StringIO.new)
-		@output = output
+	def initialize()
+		@output = TerminalOutput.new
 	end
 
 	def analyze
-		@output.puts "12 Macbeth"
-		@output.puts "4 Banquo"
-		@output.puts "3 Duncan"
+		@output.add_new_line "12 Macbeth"
+		@output.add_new_line "4 Banquo"
+		@output.add_new_line "3 Duncan"
 
-		@output.seek(0)
-		@output.read.chomp
+		@output.print
 	end
 end
