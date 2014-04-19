@@ -1,5 +1,5 @@
-require 'shakespeare_parser'
-require 'output_formatter'
+require_relative 'shakespeare_parser'
+require_relative 'output_formatter'
 
 class ShakespeareLineAnalysis
 	def initialize(source, output)
