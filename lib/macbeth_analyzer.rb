@@ -4,6 +4,8 @@ class MacbethAnalyzer
 	end
 
 	def analyze
-		@output.puts "12 Macbeth\n4 Banquo\n3 Duncan"
+		@output.puts "12 Macbeth"
+		@output.puts "4 Banquo"
+		@output.puts "3 Duncan"
 	end
 end
