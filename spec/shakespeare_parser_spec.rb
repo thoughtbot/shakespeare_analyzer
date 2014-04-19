@@ -9,4 +9,8 @@ describe '.speaker_line_count' do
 		expect(result['MACBETH']).to eq 11
 		expect(result['MALCOLM']).to eq 5
 	end
+
+	it 'throws an error for malformed xml' do
+		expect{ShakespeareParser.new("asdas")}.to raise_error
+	end
 end
