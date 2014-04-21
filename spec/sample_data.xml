@@ -1,0 +1,101 @@
+<!DOCTYPE PLAY SYSTEM "play.dtd"> 
+ 
+<PLAY> 
+<TITLE>The Tragedy of Macbeth</TITLE> 
+ 
+<FM> 
+<P>Text placed in the public domain by Moby Lexical Tools, 1992.</P> 
+<P>SGML markup by Jon Bosak, 1992-1994.</P> 
+<P>XML version by Jon Bosak, 1996-1998.</P> 
+<P>This work may be freely copied and distributed worldwide.</P> 
+</FM> 
+ 
+ 
+<PERSONAE> 
+<TITLE>Dramatis Personae</TITLE> 
+ 
+<PERSONA>DUNCAN, king of Scotland.</PERSONA> 
+ 
+<PGROUP> 
+<PERSONA>MALCOLM</PERSONA> 
+<PERSONA>DONALBAIN</PERSONA> 
+<GRPDESCR>his sons.</GRPDESCR> 
+</PGROUP> 
+ 
+ 
+<PGROUP> 
+<PERSONA>MACBETH</PERSONA> 
+<PERSONA>BANQUO</PERSONA> 
+<GRPDESCR>generals of the king's army.</GRPDESCR> 
+</PGROUP> 
+ 
+ 
+<PGROUP> 
+<PERSONA>MACDUFF</PERSONA> 
+<PERSONA>LENNOX</PERSONA> 
+<PERSONA>ROSS</PERSONA> 
+<PERSONA>MENTEITH</PERSONA> 
+<PERSONA>ANGUS</PERSONA> 
+<PERSONA>CAITHNESS</PERSONA> 
+<GRPDESCR>noblemen of Scotland.</GRPDESCR> 
+</PGROUP> 
+ 
+<PERSONA>FLEANCE, son to Banquo.</PERSONA> 
+<PERSONA>SIWARD, Earl of Northumberland, general of the English forces.</PERSONA> 
+<PERSONA>YOUNG SIWARD, his son.</PERSONA> 
+<PERSONA>SEYTON, an officer attending on Macbeth.</PERSONA> 
+<PERSONA>Boy, son to Macduff. </PERSONA> 
+<PERSONA>An English Doctor. </PERSONA> 
+<PERSONA>A Scotch Doctor. </PERSONA> 
+<PERSONA>A Soldier.</PERSONA> 
+<PERSONA>A Porter.</PERSONA> 
+<PERSONA>An Old Man.</PERSONA> 
+<PERSONA>LADY MACBETH</PERSONA> 
+<PERSONA>LADY MACDUFF</PERSONA> 
+<PERSONA>Gentlewoman attending on Lady Macbeth. </PERSONA> 
+<PERSONA>HECATE</PERSONA> 
+<PERSONA>Three Witches.</PERSONA> 
+<PERSONA>Apparitions.</PERSONA> 
+<PERSONA>Lords, Gentlemen, Officers, Soldiers, Murderers, Attendants, and Messengers. </PERSONA> 
+</PERSONAE> 
+ 
+<SCNDESCR>SCENE  Scotland: England.</SCNDESCR> 
+ 
+<PLAYSUBT>MACBETH</PLAYSUBT> 
+ 
+<ACT><TITLE>ACT I</TITLE>
+<SPEECH> 
+<SPEAKER>MACBETH</SPEAKER> 
+<LINE>Into the air; and what seem'd corporal melted</LINE> 
+<LINE>As breath into the wind. Would they had stay'd!</LINE> 
+</SPEECH> 
+
+<SPEECH> 
+<SPEAKER>ALL</SPEAKER> 
+<LINE>Fair is foul, and foul is fair:</LINE> 
+<LINE>Hover through the fog and filthy air.</LINE> 
+</SPEECH>
+
+<SPEECH> 
+<SPEAKER>MALCOLM</SPEAKER> 
+<LINE>This is the sergeant</LINE> 
+<LINE>Who like a good and hardy soldier fought</LINE> 
+<LINE>'Gainst my captivity. Hail, brave friend!</LINE> 
+<LINE>Say to the king the knowledge of the broil</LINE> 
+<LINE>As thou didst leave it.</LINE> 
+</SPEECH> 
+
+<SPEECH> 
+<SPEAKER>MACBETH</SPEAKER> 
+<LINE>Stay, you imperfect speakers, tell me more:</LINE> 
+<LINE>By Sinel's death I know I am thane of Glamis;</LINE> 
+<LINE>But how of Cawdor? the thane of Cawdor lives,</LINE> 
+<LINE>A prosperous gentleman; and to be king</LINE> 
+<LINE>Stands not within the prospect of belief,</LINE> 
+<LINE>No more than to be Cawdor. Say from whence</LINE> 
+<LINE>You owe this strange intelligence? or why</LINE> 
+<LINE>Upon this blasted heath you stop our way</LINE> 
+<LINE>With such prophetic greeting? Speak, I charge you.</LINE> 
+</SPEECH>
+</ACT>
+</PLAY>
