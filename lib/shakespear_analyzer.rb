@@ -17,7 +17,7 @@ class ShakespearAnalyzer
 			lines = i.css('LINE').count
 			add_lines_to_count speaker_name, lines
 		end
-		return @speakers_lines
+		@speakers_lines
 	end
 	def add_lines_to_count speakers_name, line_count
 		if @speakers_lines[speakers_name] == nil
