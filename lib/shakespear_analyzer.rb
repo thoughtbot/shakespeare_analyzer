@@ -12,8 +12,8 @@ class ShakespearAnalyzer
 	end
 	def count_lines xml
 		@speakers_lines = {}
-		xml.xpath("//SPEECH").each do |i|
-			speaker_name = i.css('SPEAKER').to_s.gsub('<SPEAKER>', "").gsub("</SPEAKER>","")
+		xml.css("//SPEECH").each do |i|
+			speaker_name = i.css('SPEAKER').text
 			lines = i.css('LINE').count
 			add_lines_to_count speaker_name, lines
 		end
