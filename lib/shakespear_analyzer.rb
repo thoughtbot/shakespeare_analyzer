@@ -30,5 +30,4 @@ class ShakespearAnalyzer
     def title_case str
     	str.split(/(\W)/).map(&:capitalize).join
     end
-
 end
