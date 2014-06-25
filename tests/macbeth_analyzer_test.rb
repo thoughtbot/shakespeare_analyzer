@@ -5,13 +5,13 @@ require 'nokogiri'
 class TestShakespearAnalyzer< Test::Unit::TestCase
 
   def test_xml
-   	doc = grab_xml
+    doc = grab_xml
     assert(doc.xpath('//PLAY').empty?, "There is a problem with your XML #{doc.errors}")
   end
 
   def test_count_lines
-  	doc = grab_xml
-  	count = @xmlParser.count_lines doc
+    doc = grab_xml
+    count = @xmlParser.count_lines doc
     assert(count.empty?, "No Speakers were returned. Line Count Failed" )
   end
 
