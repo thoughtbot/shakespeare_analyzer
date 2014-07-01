@@ -1,33 +1,24 @@
-require 'net/http'
+require 'open-uri'
 require 'nokogiri'
 
 class ShakespearAnalyzer 
   def initialize uri
-    @uri = uri
+    @uri = URI(uri)
   end
   def get_xml
-    uri = URI(@uri)
-    xml_data = Net::HTTP.get(uri)
+    xml_data = open(@uri)
     Nokogiri.XML(xml_data)
   end
   def count_lines xml
-    @speakers_lines = {}
+    @speakers_lines = Hash.new(0)
     xml.css("//SPEECH").each do |i|
       speaker_name = i.css('SPEAKER').text
       lines = i.css('LINE').count
-      add_lines_to_count speaker_name, lines
+      @speakers_lines[speaker_name] += lines
     end
     @speakers_lines
   end
-  def add_lines_to_count speakers_name, line_count
-    if @speakers_lines[speakers_name] == nil
-      @speakers_lines[speakers_name] = line_count
-     else
-      current_value = @speakers_lines[speakers_name]
-      @speakers_lines[speakers_name] = current_value + line_count
-    end
+  def title_case str
+    str.split(/(\W)/).map(&:capitalize).join
   end
-    def title_case str
-      str.split(/(\W)/).map(&:capitalize).join
-    end
 end
