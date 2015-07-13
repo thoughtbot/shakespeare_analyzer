@@ -1,0 +1,14 @@
+#! /usr/bin/env ruby
+
+$LOAD_PATH.unshift "lib"
+
+require 'rubygems'
+require 'bundler/setup'
+require 'nokogiri'
+require 'open-uri'
+require 'shakespeare_analyzer'
+
+printer = ->(s) { puts s }
+
+uri = "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
+ShakespeareAnalyzer.(printer, open(uri))
