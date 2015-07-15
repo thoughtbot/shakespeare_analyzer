@@ -1,9 +1,6 @@
 require "rake/testtask"
 
-require 'rubocop/rake_task'
-Rubocop::RakeTask.new
-
-task default: [:test, :rubocop]
+task default: [:test]
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "lib"

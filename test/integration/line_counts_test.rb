@@ -1,6 +1,5 @@
 require 'minitest_helper'
-require_relative '../../lib/shakespeare_analyzer'
-require_relative '../../lib/shakespeare_analyzer/printer'
+require 'shakespeare_analyzer'
 
 describe ShakespeareAnalyzer do
   describe 'call' do
@@ -9,10 +8,7 @@ describe ShakespeareAnalyzer do
     let(:xml) { File.read(fixture) }
 
     it 'must print a list of speakers and line counts' do
-      out, _ = capture_io do
-        subject.call(Printer, xml)
-      end
-      out.must_equal "6 Duncan\n5 Malcolm\n"
+      subject.call(xml).must_equal "6 Duncan\n5 Malcolm\n"
     end
   end
 end
