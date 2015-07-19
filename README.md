@@ -26,7 +26,9 @@ Well, sure. That is only fair. If I gave you no further help I wouldn't be much 
 
 I do this kind of thing much better in video than I do in text. Maybe it is because I curse less in video... Probably not, I think it may just be because I am really too lazy for my own good. Bullshit. I am a good programmer because I am just lazy enough!
 
-[Watch the video walkthrough here](http://youtu.be/420)
+Watch the [RubyLIVE.tv episode here](https://www.youtube.com/watch?v=lBkau5T1KnA)
+
+And the code is in [this branch](https://github.com/therubymentor/shakespeare_analyzer/tree/420-live)
 
 ## My solution
 
