@@ -1,5 +1,7 @@
 # Upcase Analyzing Shakespeare 
 
+One of the many excersizes I take my students through at [Devschool's Online Developer School](https://devschool.rocks)
+
 ## Directions
 
 Take the following XML file: [Macbeth XML](http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml)
