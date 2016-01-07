@@ -1,33 +1,56 @@
-***An exercise for Prime subscribers. Visit http://learn.thoughtbot.com/prime to learn more.***
+# Upcase Analyzing Shakespeare 
 
-### Difficulty level: intermediate.
+One of the many excersizes I take my students through at [Devschool's Online Developer School](https://devschool.rocks)
 
-## Your Task
+## Directions
 
-As a Shakespeare buff, statistics junkie, and unix lover, Ben finds himself wanting a command-line tool for analyzing Macbeth.
+Take the following XML file: [Macbeth XML](http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml)
 
-Write a command-line program that prints the number of lines spoken by each character in the play.
+Write Ruby code to parse the xml and extract the speakers and their line counts.
 
-Sample usage/output (using made-up numbers):
+The main entry-point is the lib/shakespeare_analyzer.rb and it is a stand-alone module, which means it holds no state and it is _not_ meant to be *mixed in*.
 
-    $ ruby macbeth_analyzer.rb
-      543 Macbeth
-      345 Banquo
-      220 Duncan
-      (etc.)
+## Running the tests
 
-You can find an XML-encoded version of Macbeth here: http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml. Your program should download and parse this file at runtime.
+```bash
+rake
+```
 
-Your solution must be tested, preferably via TDD.
+Nothing more. You might need to `bundle install` frst.
 
-## Working/Submitting
+The tests that are here are very basic top level tests. They are meant to be acceptance tests, meaning when the code 'works' these tests will pass without you changing them at'tall, as my English friend says.
 
-1. To work on this exercise, fork the repo and begin implementing your solution.
-2. When you are done, copy the output of your program into a file in this repository. 
-3. Create a pull request so your code can be reviewed.
-4. Perform a code review on at least one other person's solution. Your comments should follow our code review guidelines: https://github.com/thoughtbot/guides/tree/master/code-review. Most important: be friendly. Make suggestions, not demands. 
-5. Improve your solution based on the comments you've received and approaches you've learned from reviewing others' attempts.
+## How about some help asshole?
 
-## Bounty
+Well, sure. That is only fair. If I gave you no further help I wouldn't be much of a RubyMentor, and that is exactly what I have become and am happy to be. So.......
 
-While knowledge and skill improvement are their own rewards, the author with the best solution (as judged by thoughtbot) will receive a cool thoughtbot t-shirt.
+## TDDing the Shakespeare Analyzer
+
+I do this kind of thing much better in video than I do in text. Maybe it is because I curse less in video... Probably not, I think it may just be because I am really too lazy for my own good. Bullshit. I am a good programmer because I am just lazy enough!
+
+Watch the [RubyLIVE.tv episode here](https://www.youtube.com/watch?v=lBkau5T1KnA)
+
+And the code is in [this branch](https://github.com/therubymentor/shakespeare_analyzer/tree/420-live)
+
+## My solution
+
+Located [in this branch](https://github.com/therubymentor/shakespeare_analyzer/tree/jimokelly-solution)
+
+In the ./bin folder you will find 2 executable files that implement my solution. One prints out to a screen, the other saves the file to the hard disk as output.txt You could, for instance, write one that saves to a database or whatever floats your boat, all without editing the original software in lib. Al la, the Open/Closed principle bitches.
+
+## Running my solution
+
+to print the output to screen:
+
+```bash
+bundle
+./bin/print
+```
+
+or to save the output:
+
+```bash
+bundle
+./bin/save
+```
+
