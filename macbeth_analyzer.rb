@@ -1,35 +1,45 @@
 require 'rubygems'
 require 'nokogiri'
-require 'open-uri' # https://ruby-doc.org/stdlib-2.1.0/libdoc/open-uri/rdoc/OpenURI.html
-# => Tempfile (http://ruby-doc.org/stdlib-1.9.3/libdoc/tempfile/rdoc/Tempfile.html)
+require 'open-uri'
+require 'pry'
 
 class MacbethAnalyzer
+  DEFAULT_URL = 'http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml'
+  SPEECH = "//SPEECH"
+  ALL_REGEXP = /all/i
 
-  def initialize(script_txt)
-    script_txt = Nokogiri::XML(script_txt) { |config| config.strict.noblanks }
-    lines = get_speaking_lines(script_txt)
-    @lines_per_character = count_lines(lines)
+  attr_accessor :nokogiri_script, :lines, :lines_per_character
+
+  def initialize(script:nil)
+    self.nokogiri_script = script || get_script(DEFAULT_URL)
+    self.lines = get_speaking_lines
+    self.lines_per_character = count_lines
   end
 
-  def get_speaking_lines(script)
-    script.xpath("//SPEECH")
+  def get_script(url)
+    Nokogiri::XML.parse(open(url)) { |config| config.strict.noblanks }
   end
 
-  def count_lines(lines)
-    tally = Hash.new(0)
-    lines.each do |line|
-      speaker  = line.children.first.content
-      line_count = line.children.count - 1
-      tally[speaker] += line_count
+  def get_speaking_lines
+    nokogiri_script.xpath(SPEECH)
+  end
+
+  def count_lines
+    lines.each_with_object(Hash.new(0)) do |line, memo|
+      speaker, count = line.children.first.content, line.children.count - 1
+      memo[speaker] += count
     end
-    tally.reject { |k| k =~ /all/i }
   end
 
-  def report_tally
-    @lines_per_character.sort_by { |k, v| -v }.collect { |t| t.reverse.join ' ' }.join("\n")
+  def report
+    lines_per_character
+      .reject { |k, v| k =~ ALL_REGEXP }
+      .sort_by { |k, v| -v }
+      .collect(&:reverse)
+      .collect { |t| t.join(' ') }
+      .join("\n")
   end
+
 end
 
-
-xml_download = open "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
-puts MacbethAnalyzer.new(xml_download).report_tally
+puts MacbethAnalyzer.new().report

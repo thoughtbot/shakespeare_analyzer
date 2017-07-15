@@ -1,13 +1,22 @@
 require_relative './spec_helper'
 require_relative '../macbeth_analyzer'
+require 'pry'
+require 'nokogiri'
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
+
+
+PROPHACY = Nokogiri::XML::Document.parse(File.open( "./spec/play.xml" ))
+
 
 describe MacbethAnalyzer do
+
   it 'parses a script to count the speaking parts' do
-    expect(MacbethAnalyzer.new(PROPHACY).report_tally).to be_a(String)
+    expect(MacbethAnalyzer.new(script: PROPHACY).report).to be_a(String)
   end
 
   it 'removes all from list' do
-    expect(MacbethAnalyzer.new(PROPHACY).report_tally).to_not match( /all/i)
+    expect(MacbethAnalyzer.new(script: PROPHACY).report).to_not match( /all/i)
   end
 end
 
